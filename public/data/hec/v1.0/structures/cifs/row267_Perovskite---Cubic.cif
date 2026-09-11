@@ -1,0 +1,35 @@
+# generated using pymatgen
+data_K0.2Na0.2Ca0.2La0.2Ce0.2Ti1O3
+_symmetry_space_group_name_H-M   'P 1'
+_cell_length_a   3.91335059
+_cell_length_b   3.91521344
+_cell_length_c   3.91528896
+_cell_angle_alpha   90.00793662
+_cell_angle_beta   89.99656201
+_cell_angle_gamma   90.01518745
+_symmetry_Int_Tables_number   1
+_chemical_formula_structural   K0.2Na0.2Ca0.2La0.2Ce0.2Ti1O3
+_chemical_formula_sum   'K0.2 Na0.2 Ca0.2 La0.2 Ce0.2 Ti1 O3'
+_cell_volume   59.98849957
+_cell_formula_units_Z   1
+loop_
+ _symmetry_equiv_pos_site_id
+ _symmetry_equiv_pos_as_xyz
+  1  'x, y, z'
+loop_
+ _atom_site_type_symbol
+ _atom_site_label
+ _atom_site_symmetry_multiplicity
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_occupancy
+  K  K0  1  0.00000000  0.00000000  0.00000000  0.2
+  Na  Na1  1  0.00000000  0.00000000  0.00000000  0.2
+  Ca  Ca2  1  0.00000000  0.00000000  0.00000000  0.2
+  La  La3  1  0.00000000  0.00000000  0.00000000  0.2
+  Ce  Ce4  1  0.00000000  0.00000000  0.00000000  0.2
+  Ti  Ti5  1  0.50000000  0.50000000  0.50000000  1.0
+  O  O6  1  0.50000000  0.00000000  0.50000000  1.0
+  O  O7  1  0.50000000  0.50000000  0.00000000  1.0
+  O  O8  1  0.00000000  0.50000000  0.50000000  1.0

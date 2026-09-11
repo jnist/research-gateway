@@ -1,0 +1,42 @@
+# generated using pymatgen
+data_Na2Li0.16Mg0.08Mn1.24Al0.08Ni0.44O4
+_symmetry_space_group_name_H-M   'P 1'
+_cell_length_a   3.00945538
+_cell_length_b   3.00692715
+_cell_length_c   10.77017129
+_cell_angle_alpha   89.95618963
+_cell_angle_beta   89.97151949
+_cell_angle_gamma   120.01398974
+_symmetry_Int_Tables_number   1
+_chemical_formula_structural   Na2Li0.16Mg0.08Mn1.24Al0.08Ni0.44O4
+_chemical_formula_sum   'Na2 Li0.16 Mg0.08 Mn1.24 Al0.08 Ni0.44 O4'
+_cell_volume   84.39223089
+_cell_formula_units_Z   1
+loop_
+ _symmetry_equiv_pos_site_id
+ _symmetry_equiv_pos_as_xyz
+  1  'x, y, z'
+loop_
+ _atom_site_type_symbol
+ _atom_site_label
+ _atom_site_symmetry_multiplicity
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_occupancy
+  Na  Na0  1  0.66666667  0.33333333  0.25000000  1.0
+  Na  Na1  1  0.33333333  0.66666667  0.75000000  1.0
+  Li  Li2  1  0.00000000  0.00000000  0.50000000  0.08
+  Mg  Mg3  1  0.00000000  0.00000000  0.50000000  0.04
+  Mn  Mn4  1  0.00000000  0.00000000  0.50000000  0.62
+  Al  Al5  1  0.00000000  0.00000000  0.50000000  0.04
+  Ni  Ni6  1  0.00000000  0.00000000  0.50000000  0.22
+  Li  Li7  1  0.00000000  0.00000000  0.00000000  0.08
+  Mg  Mg8  1  0.00000000  0.00000000  0.00000000  0.04
+  Mn  Mn9  1  0.00000000  0.00000000  0.00000000  0.62
+  Al  Al10  1  0.00000000  0.00000000  0.00000000  0.04
+  Ni  Ni11  1  0.00000000  0.00000000  0.00000000  0.22
+  O  O12  1  0.33333333  0.66666667  0.40482104  1.0
+  O  O13  1  0.66666667  0.33333333  0.59517896  1.0
+  O  O14  1  0.66666667  0.33333333  0.90482104  1.0
+  O  O15  1  0.33333333  0.66666667  0.09517896  1.0

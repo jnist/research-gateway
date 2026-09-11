@@ -1,0 +1,20 @@
+---
+import { getCollection, getEntry, render } from 'astro:content';
+import ResearchLayout from '../../../layouts/ResearchLayout.astro';
+import { tools, type ToolId } from '../../../features/registry';
+export async function getStaticPaths() {
+  return (await getCollection('research')).map(entry => ({ params: { slug: entry.id }, props: { entry } }));
+}
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const englishEntry = await getEntry('researchEnglish', entry.id);
+if (!englishEntry) throw new Error(`Missing English research content: ${entry.id}`);
+const { Content: EnglishContent } = await render(englishEntry);
+const Explorer = entry.data.tool ? tools[entry.data.tool as ToolId] : undefined;
+if (entry.data.tool && !Explorer) throw new Error(`Unknown research tool: ${entry.data.tool}`);
+---
+<ResearchLayout entry={entry}>
+  {Explorer && <Explorer slot="explorer"/>}
+  <div data-locale="zh" lang="zh-CN"><Content /></div>
+  <div data-locale="en" lang="en"><EnglishContent /></div>
+</ResearchLayout>

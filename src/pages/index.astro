@@ -1,0 +1,79 @@
+---
+import { getCollection } from 'astro:content';
+import { ArrowRight, ArrowUpRight, Database, Files, Atom } from '@lucide/astro';
+import SiteLayout from '../layouts/SiteLayout.astro';
+import { href } from '../lib/site';
+import T from '../components/T.astro';
+import { attrs } from '../lib/i18n.js';
+import manifest from '../../public/data/hec/v1.0/manifest.json';
+const research = (await getCollection('research')).sort((a, b) => b.data.year - a.data.year);
+---
+<SiteLayout title="科研成果" titleEn="Research">
+  <section class="portal-intro">
+    <div class="container intro-inner">
+      <div><p class="eyebrow">JNIST / RESEARCH GATEWAY</p><h1><T zh="科研成果" en="Research"/></h1><p><T zh="汇聚研究成果，连接科学探索。" en="Research resources for scientific discovery."/></p></div>
+      <p class="intro-note"><T zh="济南超级计算技术研究院" en="Jinan Institute of Supercomputing Technology"/><br/><T zh="数据资源与研究工具" en="Data resources and research tools"/></p>
+    </div>
+  </section>
+  <section class="section" id="research">
+    <div class="container">
+      <div class="section-heading"><div><h2><span class="section-number">01</span><T zh="成果与资源" en="Research and resources"/></h2><p class="muted"><T zh="从科学数据出发，探索研究的更多可能。" en="Scientific data for further exploration."/></p></div><p class="catalog-count"><T zh={`${String(research.length).padStart(2, '0')} 项成果`} en={`${String(research.length).padStart(2, '0')} ${research.length === 1 ? 'resource' : 'resources'}`}/></p></div>
+      {research.map(entry => <article class="research-item">
+        <a class="research-visual" href={href(`research/${entry.id}/`)} {...attrs('aria-label', `查看${entry.data.title}`, `View ${entry.data.englishTitle}`)}><img {...attrs('src', href(entry.data.image), href(entry.data.en.image || entry.data.image))} {...attrs('alt', entry.data.imageAlt, entry.data.en.imageAlt)} data-i18n-attrs="src alt" width="1200" height="790" /><span class="image-caption">{entry.data.englishTitle} <ArrowUpRight size={16}/></span></a>
+        <div class="research-content">
+          <div class="research-meta"><span class="eyebrow">{entry.data.year} / RESEARCH DATA</span><span class="tag tag-green"><T zh={entry.data.status} en={entry.data.en.status}/> · v{entry.data.version}</span></div>
+          <h3><a href={href(`research/${entry.id}/`)}><T zh={entry.data.title} en={entry.data.englishTitle}/></a></h3>
+          <p class="english-title" lang="en" data-locale="zh">{entry.data.englishTitle}</p>
+          <p class="research-summary"><T zh={entry.data.summary} en={entry.data.en.summary}/></p>
+          <div class="tags">{entry.data.tags.map((tag, index) => <span class="tag tag-neutral"><T zh={tag} en={entry.data.en.tags[index]}/></span>)}</div>
+          {entry.data.tool === 'hec' && <dl class="research-stats"><div><dt><Database size={15}/><T zh="标准化组分" en="Compositions"/></dt><dd>{manifest.records}</dd></div><div><dt><Atom size={15}/><T zh="覆盖元素" en="Elements"/></dt><dd>{manifest.elements}</dd></div><div><dt><Files size={15}/><T zh="CIF 结构" en="CIF structures"/></dt><dd>{manifest.cifFiles}</dd></div></dl>}
+          <div class="actions"><a class="button button-primary" href={href(`research/${entry.id}/`)}><T zh="查看成果" en="View research"/> <ArrowRight size={16}/></a>{entry.data.tool && <a class="text-link" href={`${href(`research/${entry.id}/`)}#explorer`}><T zh="在线使用" en="Open explorer"/> <ArrowUpRight size={16}/></a>}</div>
+        </div>
+      </article>)}
+    </div>
+  </section>
+  <section class="institute-band">
+    <div class="container institute-content"><p class="eyebrow">JNIST</p><h2><T zh="济南超级计算技术研究院" en="Jinan Institute of Supercomputing Technology"/></h2><p><T zh="聚焦超算关键技术与创新应用" en="Core supercomputing technologies and innovative applications"/></p><a href={href('about/')} class="button"><T zh="了解研究院" en="About the institute"/> <ArrowRight size={16}/></a></div>
+    <img src={href('images/jnist-campus.webp')} {...attrs('alt', '国家超级计算济南中心园区', 'National Supercomputing Center in Jinan campus')} width="1903" height="795" loading="lazy"/>
+  </section>
+</SiteLayout>
+<style>
+  .portal-intro { background: #f0f4fa; border-bottom: 1px solid #e0e7f0; }
+  .intro-inner { display: flex; justify-content: space-between; gap: 28px; align-items: center; padding-block: 38px; }
+  h1 { margin-bottom: 10px; }
+  .intro-inner p:last-child { margin-bottom: 0; color: var(--color-muted); }
+  .intro-note { text-align: right; border-left: 1px solid #d5deea; padding-left: 30px; font-size: 13px; }
+  .catalog-count { font: 13px var(--font-mono); color: var(--color-muted); }
+  .research-item { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; padding-top: 28px; border-top: 1px solid var(--color-border); }
+  .research-visual { min-width: 0; align-self: stretch; display: flex; flex-direction: column; justify-content: center; background: #edf1f6; border: 1px solid var(--color-border); overflow: hidden; border-radius: 4px; }
+  .research-visual img { height: auto; width: 100%; aspect-ratio: 1200 / 790; object-fit: contain; transition: transform .3s; }
+  .research-visual:hover img { transform: scale(1.015); }
+  .image-caption { display: flex; justify-content: space-between; gap: 10px; padding: 12px 16px; font: 10px/1.6 var(--font-mono); color: #4b6282; border-top: 1px solid var(--color-border); overflow-wrap: anywhere; }
+  .research-meta { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 22px; }
+  .research-meta .eyebrow { margin: 0; }
+  .research-content h3 { font-size: 28px; margin-bottom: 8px; }
+  .english-title { font-size: 13px; color: var(--color-muted); margin-bottom: 17px; }
+  .research-summary { font-size: 14px; color: #52606d; max-width: 540px; }
+  .research-stats { display: flex; margin: 24px 0; gap: 32px; border-block: 1px solid var(--color-border); padding-block: 15px; }
+  dt { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--color-muted); }
+  dd { margin: 5px 0 0; font: 25px var(--font-mono); color: #354d6e; }
+  .institute-band { position: relative; min-height: 340px; display: grid; align-items: center; overflow: hidden; }
+  .institute-band > img { position: absolute; width: 100%; height: 100%; object-fit: cover; object-position: center; z-index: 0; }
+  .institute-band::after { content: ''; position: absolute; inset: 0; background: #0a224885; z-index: 1; }
+  .institute-content { z-index: 2; position: relative; color: white; padding-block: 48px; }
+  .institute-content .eyebrow { color: #d4e5ff; font-size: 10px; }
+  .institute-content h2 { font-size: 28px; }
+  .institute-content .button { margin-top: 10px; background: transparent; border-color: #ffffff90; color: white; }
+  @media (max-width: 900px) { .research-item { gap: 28px; } .research-stats { gap: 22px; } }
+  @media (max-width: 700px) {
+    .intro-inner { padding-block: 28px; }
+    .intro-note { display: none; }
+    .research-item { grid-template-columns: 1fr; gap: 25px; }
+    .research-visual { height: auto; }
+    .research-content h3 { font-size: 25px; }
+    .research-meta { margin-bottom: 15px; }
+    .research-stats { justify-content: space-between; }
+    .institute-content h2 { font-size: 23px; }
+    .institute-band { min-height: 300px; }
+  }
+</style>

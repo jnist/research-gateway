@@ -1,0 +1,35 @@
+---
+import { ArrowUpRight } from '@lucide/astro';
+import { href, institution } from '../lib/site';
+import T from './T.astro';
+import { attrs } from '../lib/i18n.js';
+---
+<footer class="site-footer">
+  <div class="container footer-main">
+    <div><strong><T zh={institution.name} en={institution.english}/></strong><p data-locale="zh" lang="en">{institution.english}</p><p class="footer-tagline"><T zh="科研成果 · 数据资源 · 开放工具" en="Research · Data resources · Open tools"/></p></div>
+    <div class="footer-links"><a href={href('/about/')}><T zh="关于研究院" en="About JNIST"/></a><a href={institution.repository} target="_blank" rel="noopener noreferrer">GitHub <ArrowUpRight size={14}/></a><a href="mailto:contact@jnist.cn">contact@jnist.cn</a></div>
+  </div>
+  <div class="container footer-bottom">
+    <div class="footer-copyright"><span>© {new Date().getFullYear()} <T zh={institution.name} en={institution.english}/></span><span>JNIST Research Gateway</span></div>
+    <nav class="footer-compliance" {...attrs('aria-label', '网站备案信息', 'Website registration')} lang="zh-CN">
+      <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer">鲁ICP备2020050080号</a>
+      <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=37011202001894" target="_blank" rel="noopener noreferrer">鲁公网安备 37011202001894号</a>
+    </nav>
+  </div>
+</footer>
+<style>
+  .site-footer { border-top: 1px solid var(--color-border); background: #f2f4f7; color: #4c5969; }
+  .footer-main { padding-block: 38px; display: flex; align-items: flex-start; justify-content: space-between; gap: 30px; }
+  strong { font-size: 18px; font-weight: 600; color: #344458; }
+  p { font-size: 11px; margin: 4px 0 16px; }
+  .footer-tagline { font-size: 12px; margin-top: 14px; }
+  .footer-links { display: flex; gap: 28px; align-items: center; font-size: 13px; flex-shrink: 0; }
+  .footer-main > div { min-width: 0; }
+  .footer-links a { display: inline-flex; align-items: center; gap: 4px; }
+  .footer-bottom { border-top: 1px solid var(--color-border); padding-block: 18px; display: flex; flex-direction: column; gap: 12px; font-size: 12px; color: var(--color-muted); }
+  .footer-copyright { display: flex; justify-content: space-between; gap: 15px; flex-wrap: wrap; }
+  .footer-compliance { display: flex; flex-wrap: wrap; gap: 8px 24px; }
+  .footer-compliance a { display: inline-flex; align-items: center; min-height: 28px; }
+  .footer-compliance a:hover { color: var(--color-primary); text-decoration: underline; }
+  @media (max-width: 700px) { .footer-main { flex-direction: column; } .footer-links { gap: 20px; flex-wrap: wrap; } .footer-copyright { flex-direction: column; gap: 3px; } .footer-compliance { flex-direction: column; align-items: flex-start; gap: 4px; } }
+</style>

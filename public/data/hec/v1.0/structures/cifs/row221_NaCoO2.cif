@@ -1,0 +1,42 @@
+# generated using pymatgen
+data_Na2Ti0.1Mn1.2Fe0.36Cu0.16Ni0.18O4
+_symmetry_space_group_name_H-M   'P 1'
+_cell_length_a   3.06817253
+_cell_length_b   3.05632577
+_cell_length_c   10.88400649
+_cell_angle_alpha   89.95340398
+_cell_angle_beta   90.11829776
+_cell_angle_gamma   119.91017652
+_symmetry_Int_Tables_number   1
+_chemical_formula_structural   Na2Ti0.1Mn1.2Fe0.36Cu0.16Ni0.18O4
+_chemical_formula_sum   'Na2 Ti0.1 Mn1.2 Fe0.36 Cu0.16 Ni0.18 O4'
+_cell_volume   88.46882994
+_cell_formula_units_Z   1
+loop_
+ _symmetry_equiv_pos_site_id
+ _symmetry_equiv_pos_as_xyz
+  1  'x, y, z'
+loop_
+ _atom_site_type_symbol
+ _atom_site_label
+ _atom_site_symmetry_multiplicity
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_occupancy
+  Na  Na0  1  0.66666667  0.33333333  0.25000000  1.0
+  Na  Na1  1  0.33333333  0.66666667  0.75000000  1.0
+  Ti  Ti2  1  0.00000000  0.00000000  0.50000000  0.05
+  Mn  Mn3  1  0.00000000  0.00000000  0.50000000  0.6
+  Fe  Fe4  1  0.00000000  0.00000000  0.50000000  0.18
+  Cu  Cu5  1  0.00000000  0.00000000  0.50000000  0.08
+  Ni  Ni6  1  0.00000000  0.00000000  0.50000000  0.09
+  Ti  Ti7  1  0.00000000  0.00000000  0.00000000  0.05
+  Mn  Mn8  1  0.00000000  0.00000000  0.00000000  0.6
+  Fe  Fe9  1  0.00000000  0.00000000  0.00000000  0.18
+  Cu  Cu10  1  0.00000000  0.00000000  0.00000000  0.08
+  Ni  Ni11  1  0.00000000  0.00000000  0.00000000  0.09
+  O  O12  1  0.33333333  0.66666667  0.40482104  1.0
+  O  O13  1  0.66666667  0.33333333  0.59517896  1.0
+  O  O14  1  0.66666667  0.33333333  0.90482104  1.0
+  O  O15  1  0.33333333  0.66666667  0.09517896  1.0

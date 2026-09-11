@@ -1,0 +1,35 @@
+# generated using pymatgen
+data_Ba0.34Sr0.06Ca0.1Mg0.25Ti0.75Bi0.5O3
+_symmetry_space_group_name_H-M   'P 1'
+_cell_length_a   4.02707558
+_cell_length_b   4.03387852
+_cell_length_c   4.03299676
+_cell_angle_alpha   90.04446056
+_cell_angle_beta   89.89377736
+_cell_angle_gamma   90.07334028
+_symmetry_Int_Tables_number   1
+_chemical_formula_structural   Ba0.34Sr0.06Ca0.1Mg0.25Ti0.75Bi0.5O3
+_chemical_formula_sum   'Ba0.34 Sr0.06 Ca0.1 Mg0.25 Ti0.75 Bi0.5 O3'
+_cell_volume   65.51477249
+_cell_formula_units_Z   1
+loop_
+ _symmetry_equiv_pos_site_id
+ _symmetry_equiv_pos_as_xyz
+  1  'x, y, z'
+loop_
+ _atom_site_type_symbol
+ _atom_site_label
+ _atom_site_symmetry_multiplicity
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_occupancy
+  Ba  Ba0  1  0.00000000  0.00000000  0.00000000  0.34
+  Sr  Sr1  1  0.00000000  0.00000000  0.00000000  0.06
+  Ca  Ca2  1  0.00000000  0.00000000  0.00000000  0.1
+  Bi  Bi3  1  0.00000000  0.00000000  0.00000000  0.5
+  Mg  Mg4  1  0.50000000  0.50000000  0.50000000  0.25
+  Ti  Ti5  1  0.50000000  0.50000000  0.50000000  0.75
+  O  O6  1  0.50000000  0.00000000  0.50000000  1.0
+  O  O7  1  0.50000000  0.50000000  0.00000000  1.0
+  O  O8  1  0.00000000  0.50000000  0.50000000  1.0

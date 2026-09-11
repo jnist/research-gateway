@@ -1,0 +1,73 @@
+---
+import { ArrowUpRight, Menu, X, Languages } from '@lucide/astro';
+import { href, institution } from '../lib/site';
+import T from './T.astro';
+import { attrs } from '../lib/i18n.js';
+const { active = 'research' } = Astro.props;
+---
+<header class="site-header">
+  <div class="container-wide header-inner">
+    <a href={href('/')} class="brand" {...attrs('aria-label', `${institution.name} 科研成果门户首页`, 'JNIST Research Gateway home')}>
+      <img src={href('images/jnist-logo.png')} width="360" height="70" {...attrs('alt', institution.name, institution.english)} />
+      <span class="brand-divider"></span><span class="portal-name"><T zh="科研成果门户" en="Research Gateway"/><small>JNIST RESEARCH</small></span>
+    </a>
+    <button class="menu-toggle" type="button" {...attrs('aria-label', '打开导航', 'Open navigation')} aria-expanded="false" aria-controls="site-nav"><Menu size={23}/><X size={23}/></button>
+    <nav id="site-nav" {...attrs('aria-label', '主导航', 'Main navigation')}>
+      <a href={href('/')} aria-current={active === 'research' ? 'page' : undefined}><T zh="科研成果" en="Research"/></a>
+      <a href={href('/about/')} aria-current={active === 'about' ? 'page' : undefined}><T zh="关于研究院" en="About"/></a>
+      <a href={institution.website} target="_blank" rel="noopener noreferrer"><T zh="研究院官网" en="Institute website"/> <ArrowUpRight size={15}/></a>
+    </nav>
+    <label class="language-switch"><Languages size={17}/><select data-language-switch disabled {...attrs('aria-label', '语言', 'Language')}><option value="en">English</option><option value="zh">中文</option></select></label>
+  </div>
+</header>
+<script>
+  import { translate } from '../lib/i18n.js';
+  const toggle = document.querySelector<HTMLButtonElement>('.menu-toggle');
+  const nav = document.querySelector('#site-nav');
+  toggle?.addEventListener('click', () => {
+    const expanded = toggle.getAttribute('aria-expanded') !== 'true';
+    toggle.setAttribute('aria-expanded', String(expanded));
+    toggle.setAttribute('aria-label', expanded ? translate('关闭导航', 'Close navigation') : translate('打开导航', 'Open navigation'));
+    nav?.classList.toggle('is-open', expanded);
+  });
+  document.addEventListener('localechange', () => toggle?.setAttribute('aria-label', toggle.getAttribute('aria-expanded') === 'true' ? translate('关闭导航', 'Close navigation') : translate('打开导航', 'Open navigation')));
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && toggle?.getAttribute('aria-expanded') === 'true') {
+      toggle.click();
+      toggle.focus();
+    }
+  });
+</script>
+<style>
+  .site-header { background: var(--color-primary-dark); color: white; position: relative; z-index: 20; }
+  .header-inner { min-height: 86px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+  .language-switch { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+  .language-switch select { color: white; background: transparent; border: 1px solid #ffffff60; min-height: 36px; padding: 4px; font-size: 12px; width: 82px; }
+  .language-switch option { color: #1f2937; background: white; }
+  .brand { display: flex; align-items: center; gap: 22px; min-width: 0; color: white; }
+  .brand img { width: 280px; height: auto; }
+  .brand-divider { height: 34px; width: 1px; background: #ffffff45; }
+  .portal-name { font-size: 15px; white-space: nowrap; line-height: 1.8; }
+  .portal-name small { font: 9px var(--font-mono); display: block; opacity: .7; }
+  nav { display: flex; gap: 24px; align-self: stretch; align-items: center; margin-left: auto; }
+  nav a { display: flex; align-items: center; gap: 5px; height: 100%; font-size: 14px; white-space: nowrap; position: relative; }
+  nav a:hover { color: #dbe9ff; }
+  nav a[aria-current]::after { content: ''; position: absolute; height: 3px; background: white; bottom: 0; left: 0; right: 0; }
+  .menu-toggle { display: none; background: transparent; border: 0; color: white; padding: 8px; }
+  .menu-toggle svg:last-child { display: none; }
+  @media (max-width: 1200px) { .brand img { width: 235px; } .brand-divider, .portal-name { display: none; } nav { gap: 20px; } }
+  @media (max-width: 800px) {
+    .header-inner { min-height: 72px; gap: 8px; }
+    .brand { flex: 1; }
+    .brand img { width: 238px; min-width: 0; }
+    .menu-toggle { display: inline-flex; order: 3; padding: 6px; flex-shrink: 0; }
+    .language-switch { gap: 0; }
+    .language-switch > svg { display: none; }
+    .language-switch select { width: 72px; }
+    .menu-toggle[aria-expanded="true"] svg:first-child { display: none; }
+    .menu-toggle[aria-expanded="true"] svg:last-child { display: block; }
+    nav { display: none; position: absolute; left: 0; right: 0; top: 72px; height: auto; background: var(--color-primary-dark); padding: 15px 24px 24px; flex-direction: column; align-items: stretch; gap: 0; }
+    nav.is-open { display: flex; }
+    nav a { padding: 14px 0; }
+  }
+</style>

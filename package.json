@@ -1,0 +1,29 @@
+{
+  "name": "jnist-research-gateway",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev --host 127.0.0.1",
+    "check": "astro check",
+    "test": "node --test tests/unit/*.test.mjs",
+    "validate:data": "node scripts/validate-data.mjs",
+    "build": "npm run validate:data && astro build",
+    "preview": "astro preview --host 127.0.0.1",
+    "test:e2e": "playwright test"
+  },
+  "dependencies": {
+    "@astrojs/check": "0.9.10",
+    "@lucide/astro": "1.44.0",
+    "@types/papaparse": "5.5.2",
+    "astro": "7.3.2",
+    "papaparse": "5.7.0",
+    "typescript": "6.0.3"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.63.0"
+  }
+}

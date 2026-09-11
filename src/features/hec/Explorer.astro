@@ -1,0 +1,48 @@
+---
+import { Upload, RotateCcw, Download, ChevronLeft, ChevronRight, Search, Atom } from '@lucide/astro';
+import { href } from '../../lib/site';
+import T from '../../components/T.astro';
+import { attrs } from '../../lib/i18n.js';
+import manifest from '../../../public/data/hec/v1.0/manifest.json';
+import './styles.css';
+---
+<section id="explorer" class="hec-explorer section" data-asset-base={href('data/hec/v1.0/')} data-version={manifest.version}>
+  <div class="container-wide">
+    <div class="explorer-title">
+      <div><p class="eyebrow">HIGH-ENTROPY CERAMICS EXPLORER</p><h2><span class="section-number">01</span><T zh="元素与组分检索" en="Elements and compositions"/></h2></div>
+      <div class="dataset-metrics"><span><b id="metricRecords">{manifest.records}</b> <T zh="组分" en="compositions"/></span><span><b id="metricElements">{manifest.elements}</b> <T zh="元素" en="elements"/></span><span><b id="metricPrototypes">{manifest.prototypes}</b> <T zh="原型标注" en="prototype labels"/></span></div>
+    </div>
+    <div class="dataset-toolbar">
+      <div class="dataset-status"><span class="status-dot"></span><span id="statusText" role="status" aria-live="polite"><T zh="正在加载官方数据…" en="Loading official data..."/></span></div>
+      <div class="actions"><button type="button" id="restoreDataset" class="icon-button" {...attrs('aria-label', '重新加载官方数据', 'Reload official data')} data-i18n-attrs="aria-label title" title="Reload official data" data-en-title="Reload official data" data-zh-title="重新加载官方数据"><RotateCcw size={16}/></button><label class="button import-button"><Upload size={15}/><T zh="导入本地 CSV" en="Import local CSV"/><input id="csvFile" type="file" accept=".csv,text/csv" {...attrs('aria-label', '导入本地 CSV', 'Import local CSV')}/></label></div>
+    </div>
+    <p class="load-error" role="alert" id="loadError" hidden></p>
+    <noscript><p class="notice"><T zh="在线检索需要 JavaScript。完整 CSV 和结构资源仍可从数据下载入口获取。" en="The explorer requires JavaScript. The full CSV and structure resources remain available in Downloads."/></p></noscript>
+    <div class="periodic-toolbar">
+      <h3><T zh="元素周期表" en="Periodic table"/></h3>
+      <div class="element-search"><Search size={16}/><input type="search" id="elementSearch" {...attrs('aria-label', '搜索元素', 'Search elements')} data-i18n-attrs="aria-label placeholder" placeholder="Symbol / name" data-en-placeholder="Symbol / name" data-zh-placeholder="元素符号 / 名称" autocomplete="off"/><div id="searchResults" class="search-results" hidden></div></div>
+    </div>
+    <div class="periodic-scroll" tabindex="0" role="region" {...attrs('aria-label', '元素周期表，可横向滚动', 'Periodic table, horizontally scrollable')}>
+      <div class="periodic-inner">
+        <div id="periodicTable" class="periodic-table" {...attrs('aria-label', '元素周期表', 'Periodic table')}></div>
+        <div class="lanthanides-section"><span><T zh="镧系元素" en="Lanthanides"/></span><div id="lanthanideTable" class="periodic-table" {...attrs('aria-label', '镧系元素', 'Lanthanides')}></div></div>
+      </div>
+    </div>
+    <div class="periodic-legend"><span><i class="legend-metal"></i><T zh="金属元素" en="Metals"/></span><span><i class="legend-earth"></i><T zh="稀土元素" en="Rare earths"/></span><span><i class="legend-nonmetal"></i><T zh="非金属 / 类金属" en="Nonmetals / metalloids"/></span><span><i class="legend-disabled"></i><T zh="数据未收录" en="Not in dataset"/></span><span><i class="legend-selected"></i><T zh="已选" en="Selected"/></span></div>
+    <div class="selection-bar"><span class="selection-label"><T zh="已选元素" en="Selected elements"/></span><div id="selectedElements" class="selected-elements"></div><button id="clearSelection" type="button" class="clear-button"><RotateCcw size={14}/><T zh="清空" en="Clear"/></button></div>
+    <p class="match-rule"><T zh="匹配规则：所选元素须同时位于同一晶格位点。" en="All selected elements must share the same lattice site."/> <a href="#overview"><T zh="数据说明" en="Data documentation"/></a></p>
+    <div class="results-heading"><div><h3><T zh="筛选结果" en="Results"/></h3><p id="resultCount" aria-live="polite"><T zh="尚未选择元素" en="No elements selected"/></p></div><button id="exportResults" type="button" class="button" disabled><Download size={16}/><T zh="导出筛选结果" en="Export results"/></button></div>
+    <div class="results-wrap" tabindex="0" role="region" {...attrs('aria-label', '筛选结果表，可横向滚动', 'Results table, horizontally scrollable')}>
+      <table>
+        <thead><tr><th scope="col">ID</th><th scope="col"><T zh="化学式" en="Composition"/></th><th scope="col"><T zh="晶体原型" en="Prototype"/></th><th scope="col">CIF</th><th scope="col"><T zh="弛豫超胞" en="Relaxed supercell"/></th><th scope="col"><T zh="来源文献" en="References"/></th></tr></thead>
+        <tbody id="resultsBody"></tbody>
+      </table>
+    </div>
+    <div class="empty-state" id="emptyState"><Atom size={30}/><span><T zh="尚未选择元素" en="No elements selected"/></span><p>High-Entropy Ceramics Database · v{manifest.version}</p></div>
+    <div class="pagination"><label><T zh="每页" en="Rows per page"/> <select id="pageSize" {...attrs('aria-label', '每页记录数', 'Rows per page')}><option value="25">25</option><option value="50">50</option><option value="100">100</option></select></label><div><span id="pageInfo">0 / 0</span><button id="prevPage" class="icon-button" type="button" {...attrs('aria-label', '上一页', 'Previous page')} data-i18n-attrs="aria-label title" title="Previous page" data-en-title="Previous page" data-zh-title="上一页" disabled><ChevronLeft size={18}/></button><button id="nextPage" class="icon-button" type="button" {...attrs('aria-label', '下一页', 'Next page')} data-i18n-attrs="aria-label title" title="Next page" data-en-title="Next page" data-zh-title="下一页" disabled><ChevronRight size={18}/></button></div></div>
+  </div>
+</section>
+<script>
+  import { initExplorer } from './main.js';
+  document.querySelectorAll<HTMLElement>('.hec-explorer').forEach(root => initExplorer(root, { assetBaseUrl: root.dataset.assetBase || '', version: root.dataset.version || '1.0' }));
+</script>

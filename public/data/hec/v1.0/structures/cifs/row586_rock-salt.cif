@@ -1,0 +1,50 @@
+# generated using pymatgen
+data_Ag0.4Sn0.4Ge2.32Sb0.88Te3.2Se0.8
+_symmetry_space_group_name_H-M   'P 1'
+_cell_length_a   6.06573958
+_cell_length_b   6.06352925
+_cell_length_c   6.07700212
+_cell_angle_alpha   90.05167534
+_cell_angle_beta   90.04339230
+_cell_angle_gamma   89.94887300
+_symmetry_Int_Tables_number   1
+_chemical_formula_structural   Ag0.4Sn0.4Ge2.32Sb0.88Te3.2Se0.8
+_chemical_formula_sum   'Ag0.4 Sn0.4 Ge2.32 Sb0.88 Te3.2 Se0.8'
+_cell_volume   223.51061371
+_cell_formula_units_Z   1
+loop_
+ _symmetry_equiv_pos_site_id
+ _symmetry_equiv_pos_as_xyz
+  1  'x, y, z'
+loop_
+ _atom_site_type_symbol
+ _atom_site_label
+ _atom_site_symmetry_multiplicity
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_occupancy
+  Ag  Ag0  1  0.00000000  0.00000000  0.00000000  0.1
+  Sn  Sn1  1  0.00000000  0.00000000  0.00000000  0.1
+  Ge  Ge2  1  0.00000000  0.00000000  0.00000000  0.58
+  Sb  Sb3  1  0.00000000  0.00000000  0.00000000  0.22
+  Ag  Ag4  1  0.50000000  0.50000000  0.00000000  0.1
+  Sn  Sn5  1  0.50000000  0.50000000  0.00000000  0.1
+  Ge  Ge6  1  0.50000000  0.50000000  0.00000000  0.58
+  Sb  Sb7  1  0.50000000  0.50000000  0.00000000  0.22
+  Ag  Ag8  1  0.50000000  0.00000000  0.50000000  0.1
+  Sn  Sn9  1  0.50000000  0.00000000  0.50000000  0.1
+  Ge  Ge10  1  0.50000000  0.00000000  0.50000000  0.58
+  Sb  Sb11  1  0.50000000  0.00000000  0.50000000  0.22
+  Ag  Ag12  1  0.00000000  0.50000000  0.50000000  0.1
+  Sn  Sn13  1  0.00000000  0.50000000  0.50000000  0.1
+  Ge  Ge14  1  0.00000000  0.50000000  0.50000000  0.58
+  Sb  Sb15  1  0.00000000  0.50000000  0.50000000  0.22
+  Te  Te16  1  0.00000000  0.50000000  0.00000000  0.8
+  Se  Se17  1  0.00000000  0.50000000  0.00000000  0.2
+  Te  Te18  1  0.50000000  0.00000000  0.00000000  0.8
+  Se  Se19  1  0.50000000  0.00000000  0.00000000  0.2
+  Te  Te20  1  0.00000000  0.00000000  0.50000000  0.8
+  Se  Se21  1  0.00000000  0.00000000  0.50000000  0.2
+  Te  Te22  1  0.50000000  0.50000000  0.50000000  0.8
+  Se  Se23  1  0.50000000  0.50000000  0.50000000  0.2

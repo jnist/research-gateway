@@ -1,0 +1,37 @@
+# generated using pymatgen
+data_Ba0.33333333Na0.33333333Ti0.5556Nb0.2222Fe0.2222Bi0.33333333O3
+_symmetry_space_group_name_H-M   'P 1'
+_cell_length_a   4.02637327
+_cell_length_b   4.02067164
+_cell_length_c   4.02359529
+_cell_angle_alpha   90.02282265
+_cell_angle_beta   90.03900419
+_cell_angle_gamma   90.00554438
+_symmetry_Int_Tables_number   1
+_chemical_formula_structural
+Ba0.33333333Na0.33333333Ti0.5556Nb0.2222Fe0.2222Bi0.33333333O3
+_chemical_formula_sum
+'Ba0.33333333 Na0.33333333 Ti0.5556 Nb0.2222 Fe0.2222 Bi0.33333333 O3'
+_cell_volume   65.13685626
+_cell_formula_units_Z   1
+loop_
+ _symmetry_equiv_pos_site_id
+ _symmetry_equiv_pos_as_xyz
+  1  'x, y, z'
+loop_
+ _atom_site_type_symbol
+ _atom_site_label
+ _atom_site_symmetry_multiplicity
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_occupancy
+  Ba  Ba0  1  0.00000000  0.00000000  0.00000000  0.3333333333333333
+  Na  Na1  1  0.00000000  0.00000000  0.00000000  0.3333333333333333
+  Bi  Bi2  1  0.00000000  0.00000000  0.00000000  0.3333333333333333
+  Ti  Ti3  1  0.50000000  0.50000000  0.50000000  0.5556
+  Nb  Nb4  1  0.50000000  0.50000000  0.50000000  0.2222
+  Fe  Fe5  1  0.50000000  0.50000000  0.50000000  0.2222
+  O  O6  1  0.50000000  0.00000000  0.50000000  1.0
+  O  O7  1  0.50000000  0.50000000  0.00000000  1.0
+  O  O8  1  0.00000000  0.50000000  0.50000000  1.0

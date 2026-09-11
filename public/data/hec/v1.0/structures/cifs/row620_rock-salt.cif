@@ -1,0 +1,50 @@
+# generated using pymatgen
+data_Li3.5Mg0.5Zr1Mn0.6668Nb1Fe1.3332
+_symmetry_space_group_name_H-M   'P 1'
+_cell_length_a   4.96762890
+_cell_length_b   4.98852353
+_cell_length_c   5.02260779
+_cell_angle_alpha   89.47384797
+_cell_angle_beta   90.33105167
+_cell_angle_gamma   89.60306978
+_symmetry_Int_Tables_number   1
+_chemical_formula_structural   Li3.5Mg0.5Zr1Mn0.6668Nb1Fe1.3332
+_chemical_formula_sum   'Li3.5 Mg0.5 Zr1 Mn0.6668 Nb1 Fe1.3332'
+_cell_volume   124.45555658
+_cell_formula_units_Z   1
+loop_
+ _symmetry_equiv_pos_site_id
+ _symmetry_equiv_pos_as_xyz
+  1  'x, y, z'
+loop_
+ _atom_site_type_symbol
+ _atom_site_label
+ _atom_site_symmetry_multiplicity
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_occupancy
+  Li  Li0  1  0.00000000  0.00000000  0.00000000  0.875
+  Mg  Mg1  1  0.00000000  0.00000000  0.00000000  0.125
+  Li  Li2  1  0.50000000  0.50000000  0.00000000  0.875
+  Mg  Mg3  1  0.50000000  0.50000000  0.00000000  0.125
+  Li  Li4  1  0.50000000  0.00000000  0.50000000  0.875
+  Mg  Mg5  1  0.50000000  0.00000000  0.50000000  0.125
+  Li  Li6  1  0.00000000  0.50000000  0.50000000  0.875
+  Mg  Mg7  1  0.00000000  0.50000000  0.50000000  0.125
+  Zr  Zr8  1  0.00000000  0.50000000  0.00000000  0.25
+  Mn  Mn9  1  0.00000000  0.50000000  0.00000000  0.1667
+  Nb  Nb10  1  0.00000000  0.50000000  0.00000000  0.25
+  Fe  Fe11  1  0.00000000  0.50000000  0.00000000  0.3333
+  Zr  Zr12  1  0.50000000  0.00000000  0.00000000  0.25
+  Mn  Mn13  1  0.50000000  0.00000000  0.00000000  0.1667
+  Nb  Nb14  1  0.50000000  0.00000000  0.00000000  0.25
+  Fe  Fe15  1  0.50000000  0.00000000  0.00000000  0.3333
+  Zr  Zr16  1  0.00000000  0.00000000  0.50000000  0.25
+  Mn  Mn17  1  0.00000000  0.00000000  0.50000000  0.1667
+  Nb  Nb18  1  0.00000000  0.00000000  0.50000000  0.25
+  Fe  Fe19  1  0.00000000  0.00000000  0.50000000  0.3333
+  Zr  Zr20  1  0.50000000  0.50000000  0.50000000  0.25
+  Mn  Mn21  1  0.50000000  0.50000000  0.50000000  0.1667
+  Nb  Nb22  1  0.50000000  0.50000000  0.50000000  0.25
+  Fe  Fe23  1  0.50000000  0.50000000  0.50000000  0.3333

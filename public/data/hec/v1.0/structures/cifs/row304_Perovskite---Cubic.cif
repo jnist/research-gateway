@@ -1,0 +1,47 @@
+# generated using pymatgen
+data_Na0.28816199Sr0.26895119La0.0768432Mg0.0375Zr0.0375Ti0.925Bi0.36604361O3
+_symmetry_space_group_name_H-M   'P 1'
+_cell_length_a   3.94880592
+_cell_length_b   3.94601778
+_cell_length_c   3.94780058
+_cell_angle_alpha   90.02152442
+_cell_angle_beta   90.03468129
+_cell_angle_gamma   89.98550728
+_symmetry_Int_Tables_number   1
+_chemical_formula_structural
+;
+Na0.28816199Sr0.26895119La0.0768432Mg0.0375Zr0.0375Ti0.925Bi0.36604361
+O3
+;
+_chemical_formula_sum
+;
+Na0.28816199 Sr0.26895119 La0.0768432 Mg0.0375 Zr0.0375 Ti0.925
+Bi0.36604361 O3
+;
+_cell_volume   61.51484150
+_cell_formula_units_Z   1
+loop_
+ _symmetry_equiv_pos_site_id
+ _symmetry_equiv_pos_as_xyz
+  1  'x, y, z'
+loop_
+ _atom_site_type_symbol
+ _atom_site_label
+ _atom_site_symmetry_multiplicity
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_occupancy
+  Na  Na0  1  0.00000000  0.00000000  0.00000000
+  0.28816199376947044
+  Sr  Sr1  1  0.00000000  0.00000000  0.00000000
+  0.26895119418483904
+  La  La2  1  0.00000000  0.00000000  0.00000000
+  0.07684319833852545
+  Bi  Bi3  1  0.00000000  0.00000000  0.00000000  0.3660436137071651
+  Mg  Mg4  1  0.50000000  0.50000000  0.50000000  0.0375
+  Zr  Zr5  1  0.50000000  0.50000000  0.50000000  0.0375
+  Ti  Ti6  1  0.50000000  0.50000000  0.50000000  0.925
+  O  O7  1  0.50000000  0.00000000  0.50000000  1.0
+  O  O8  1  0.50000000  0.50000000  0.00000000  1.0
+  O  O9  1  0.00000000  0.50000000  0.50000000  1.0

@@ -1,0 +1,47 @@
+# generated using pymatgen
+data_Ta0.6Nb0.6Cr0.6Si6Mo0.6W0.6
+_symmetry_space_group_name_H-M   'P 1'
+_cell_length_a   4.72293101
+_cell_length_b   4.72384796
+_cell_length_c   6.49246110
+_cell_angle_alpha   90.00639820
+_cell_angle_beta   89.98976248
+_cell_angle_gamma   120.01934931
+_symmetry_Int_Tables_number   1
+_chemical_formula_structural   Ta0.6Nb0.6Cr0.6Si6Mo0.6W0.6
+_chemical_formula_sum   'Ta0.6 Nb0.6 Cr0.6 Si6 Mo0.6 W0.6'
+_cell_volume   125.41884089
+_cell_formula_units_Z   1
+loop_
+ _symmetry_equiv_pos_site_id
+ _symmetry_equiv_pos_as_xyz
+  1  'x, y, z'
+loop_
+ _atom_site_type_symbol
+ _atom_site_label
+ _atom_site_symmetry_multiplicity
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_occupancy
+  Ta  Ta0  1  0.00000000  0.50000000  0.16666667  0.2
+  Nb  Nb1  1  0.00000000  0.50000000  0.16666667  0.2
+  Cr  Cr2  1  0.00000000  0.50000000  0.16666667  0.2
+  Mo  Mo3  1  0.00000000  0.50000000  0.16666667  0.2
+  W  W4  1  0.00000000  0.50000000  0.16666667  0.2
+  Ta  Ta5  1  0.50000000  0.50000000  0.83333333  0.2
+  Nb  Nb6  1  0.50000000  0.50000000  0.83333333  0.2
+  Cr  Cr7  1  0.50000000  0.50000000  0.83333333  0.2
+  Mo  Mo8  1  0.50000000  0.50000000  0.83333333  0.2
+  W  W9  1  0.50000000  0.50000000  0.83333333  0.2
+  Ta  Ta10  1  0.50000000  0.00000000  0.50000000  0.2
+  Nb  Nb11  1  0.50000000  0.00000000  0.50000000  0.2
+  Cr  Cr12  1  0.50000000  0.00000000  0.50000000  0.2
+  Mo  Mo13  1  0.50000000  0.00000000  0.50000000  0.2
+  W  W14  1  0.50000000  0.00000000  0.50000000  0.2
+  Si  Si15  1  0.84184301  0.68368602  0.50000000  1.0
+  Si  Si16  1  0.15815699  0.84184301  0.83333333  1.0
+  Si  Si17  1  0.68368602  0.84184301  0.16666667  1.0
+  Si  Si18  1  0.15815699  0.31631398  0.50000000  1.0
+  Si  Si19  1  0.84184301  0.15815699  0.83333333  1.0
+  Si  Si20  1  0.31631398  0.15815699  0.16666667  1.0

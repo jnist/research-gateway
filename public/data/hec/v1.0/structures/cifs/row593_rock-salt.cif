@@ -1,0 +1,46 @@
+# generated using pymatgen
+data_Ag0.4Ge3.2Bi0.4Te3.2Se0.8
+_symmetry_space_group_name_H-M   'P 1'
+_cell_length_a   6.02638542
+_cell_length_b   6.02985347
+_cell_length_c   6.03356559
+_cell_angle_alpha   90.04732544
+_cell_angle_beta   89.96608155
+_cell_angle_gamma   90.07434435
+_symmetry_Int_Tables_number   1
+_chemical_formula_structural   Ag0.4Ge3.2Bi0.4Te3.2Se0.8
+_chemical_formula_sum   'Ag0.4 Ge3.2 Bi0.4 Te3.2 Se0.8'
+_cell_volume   219.24874255
+_cell_formula_units_Z   1
+loop_
+ _symmetry_equiv_pos_site_id
+ _symmetry_equiv_pos_as_xyz
+  1  'x, y, z'
+loop_
+ _atom_site_type_symbol
+ _atom_site_label
+ _atom_site_symmetry_multiplicity
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_occupancy
+  Ag  Ag0  1  0.00000000  0.00000000  0.00000000  0.1
+  Ge  Ge1  1  0.00000000  0.00000000  0.00000000  0.8
+  Bi  Bi2  1  0.00000000  0.00000000  0.00000000  0.1
+  Ag  Ag3  1  0.50000000  0.50000000  0.00000000  0.1
+  Ge  Ge4  1  0.50000000  0.50000000  0.00000000  0.8
+  Bi  Bi5  1  0.50000000  0.50000000  0.00000000  0.1
+  Ag  Ag6  1  0.50000000  0.00000000  0.50000000  0.1
+  Ge  Ge7  1  0.50000000  0.00000000  0.50000000  0.8
+  Bi  Bi8  1  0.50000000  0.00000000  0.50000000  0.1
+  Ag  Ag9  1  0.00000000  0.50000000  0.50000000  0.1
+  Ge  Ge10  1  0.00000000  0.50000000  0.50000000  0.8
+  Bi  Bi11  1  0.00000000  0.50000000  0.50000000  0.1
+  Te  Te12  1  0.00000000  0.50000000  0.00000000  0.8
+  Se  Se13  1  0.00000000  0.50000000  0.00000000  0.2
+  Te  Te14  1  0.50000000  0.00000000  0.00000000  0.8
+  Se  Se15  1  0.50000000  0.00000000  0.00000000  0.2
+  Te  Te16  1  0.00000000  0.00000000  0.50000000  0.8
+  Se  Se17  1  0.00000000  0.00000000  0.50000000  0.2
+  Te  Te18  1  0.50000000  0.50000000  0.50000000  0.8
+  Se  Se19  1  0.50000000  0.50000000  0.50000000  0.2
