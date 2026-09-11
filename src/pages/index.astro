@@ -19,15 +19,15 @@ const research = (await getCollection('research')).sort((a, b) => b.data.year - 
     <div class="container">
       <div class="section-heading"><div><h2><span class="section-number">01</span><T zh="成果与资源" en="Research and resources"/></h2><p class="muted"><T zh="从科学数据出发，探索研究的更多可能。" en="Scientific data for further exploration."/></p></div><p class="catalog-count"><T zh={`${String(research.length).padStart(2, '0')} 项成果`} en={`${String(research.length).padStart(2, '0')} ${research.length === 1 ? 'resource' : 'resources'}`}/></p></div>
       {research.map(entry => <article class="research-item">
-        <a class="research-visual" href={href(`${entry.data.year}/${entry.id}/`)} {...attrs('aria-label', `查看${entry.data.title}`, `View ${entry.data.englishTitle}`)}><img {...attrs('src', href(entry.data.image), href(entry.data.en.image || entry.data.image))} {...attrs('alt', entry.data.imageAlt, entry.data.en.imageAlt)} data-i18n-attrs="src alt" width="1200" height="790" /><span class="image-caption">{entry.data.englishTitle} <ArrowUpRight size={16}/></span></a>
+        <a class="research-visual" href={href(`dataset/${entry.id}/`)} {...attrs('aria-label', `查看${entry.data.title}`, `View ${entry.data.englishTitle}`)}><img {...attrs('src', href(entry.data.image), href(entry.data.en.image || entry.data.image))} {...attrs('alt', entry.data.imageAlt, entry.data.en.imageAlt)} data-i18n-attrs="src alt" width="1200" height="790" /><span class="image-caption">{entry.data.englishTitle} <ArrowUpRight size={16}/></span></a>
         <div class="research-content">
           <div class="research-meta"><span class="eyebrow">{entry.data.year} / RESEARCH DATA</span><span class="tag tag-green"><T zh={entry.data.status} en={entry.data.en.status}/> · v{entry.data.version}</span></div>
-          <h3><a href={href(`${entry.data.year}/${entry.id}/`)}><T zh={entry.data.title} en={entry.data.englishTitle}/></a></h3>
+          <h3><a href={href(`dataset/${entry.id}/`)}><T zh={entry.data.title} en={entry.data.englishTitle}/></a></h3>
           <p class="english-title" lang="en" data-locale="zh">{entry.data.englishTitle}</p>
           <p class="research-summary"><T zh={entry.data.summary} en={entry.data.en.summary}/></p>
           <div class="tags">{entry.data.tags.map((tag, index) => <span class="tag tag-neutral"><T zh={tag} en={entry.data.en.tags[index]}/></span>)}</div>
           {entry.data.tool === 'hec' && <dl class="research-stats"><div><dt><Database size={15}/><T zh="标准化组分" en="Compositions"/></dt><dd>{manifest.records}</dd></div><div><dt><Atom size={15}/><T zh="覆盖元素" en="Elements"/></dt><dd>{manifest.elements}</dd></div><div><dt><Files size={15}/><T zh="CIF 结构" en="CIF structures"/></dt><dd>{manifest.cifFiles}</dd></div></dl>}
-          <div class="actions"><a class="button button-primary" href={href(`${entry.data.year}/${entry.id}/`)}><T zh="查看成果" en="View research"/> <ArrowRight size={16}/></a>{entry.data.tool && <a class="text-link" href={`${href(`${entry.data.year}/${entry.id}/`)}#explorer`}><T zh="在线使用" en="Open explorer"/> <ArrowUpRight size={16}/></a>}</div>
+          <div class="actions"><a class="button button-primary" href={href(`dataset/${entry.id}/`)}><T zh="查看成果" en="View research"/> <ArrowRight size={16}/></a>{entry.data.tool && <a class="text-link" href={`${href(`dataset/${entry.id}/`)}#explorer`}><T zh="在线使用" en="Open explorer"/> <ArrowUpRight size={16}/></a>}</div>
         </div>
       </article>)}
     </div>

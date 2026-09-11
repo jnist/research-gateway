@@ -14,7 +14,7 @@
 
 在元素周期表上选择元素，即可筛选组分、查阅文献并下载结构文件。筛选结果可导出为 CSV，也支持导入本地数据进行检索。
 
-[打开数据库](https://research.jnist.cn/2026/hec/)
+[打开数据库](https://research.jnist.cn/dataset/hec/)
 
 ![高熵陶瓷数据库预览](public/images/hec-preview.png)
 

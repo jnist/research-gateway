@@ -15,7 +15,7 @@ for (const locale of ['zh-CN', 'en-US']) {
     test.use({ locale });
 
     test('selection follows scrolling in both directions and at the page bottom', async ({ page }, testInfo) => {
-      await page.goto('2026/hec/');
+      await page.goto('dataset/hec/');
       await expect(page.locator('#statusText')).toContainText('717');
       for (const id of ['explorer', 'overview', 'downloads', 'citation', 'downloads', 'overview', 'explorer']) {
         await page.locator(`#${id}`).evaluate(node => {
@@ -34,7 +34,7 @@ for (const locale of ['zh-CN', 'en-US']) {
     });
 
     test('selects downloads when only the overview tail remains above it', async ({ page }) => {
-      await page.goto('2026/hec/');
+      await page.goto('dataset/hec/');
       await expect(page.locator('#statusText')).toContainText('717');
       await page.locator('#downloads').evaluate(node => {
         window.scrollTo({ top: window.scrollY + node.getBoundingClientRect().top - 150, behavior: 'instant' });
@@ -43,7 +43,7 @@ for (const locale of ['zh-CN', 'en-US']) {
     });
 
     test('clicking section links updates selection without changing the sticky menu height', async ({ page }) => {
-      await page.goto('2026/hec/#explorer');
+      await page.goto('dataset/hec/#explorer');
       await expect(page.locator('#statusText')).toContainText('717');
       const nav = page.locator('.research-tabs');
       const height = await nav.evaluate(node => node.getBoundingClientRect().height);
@@ -56,7 +56,7 @@ for (const locale of ['zh-CN', 'en-US']) {
     });
 
     test('direct anchors and reload initialize the current section', async ({ page }) => {
-      await page.goto('2026/hec/#downloads');
+      await page.goto('dataset/hec/#downloads');
       await expect(page.locator('#statusText')).toContainText('717');
       await expectActiveSection(page, 'downloads');
       await page.reload();

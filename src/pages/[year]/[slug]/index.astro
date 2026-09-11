@@ -1,23 +1,26 @@
 ---
-import { getCollection, getEntry, render } from 'astro:content';
-import ResearchLayout from '../../../layouts/ResearchLayout.astro';
-import { tools, type ToolId } from '../../../features/registry';
+import { getCollection } from 'astro:content';
+import { href } from '../../../lib/site';
 export async function getStaticPaths() {
   return (await getCollection('research')).map(entry => ({
     params: { year: String(entry.data.year), slug: entry.id },
-    props: { entry },
+    props: { slug: entry.id },
   }));
 }
-const { entry } = Astro.props;
-const { Content } = await render(entry);
-const englishEntry = await getEntry('researchEnglish', entry.id);
-if (!englishEntry) throw new Error(`Missing English research content: ${entry.id}`);
-const { Content: EnglishContent } = await render(englishEntry);
-const Explorer = entry.data.tool ? tools[entry.data.tool as ToolId] : undefined;
-if (entry.data.tool && !Explorer) throw new Error(`Unknown research tool: ${entry.data.tool}`);
+const destination = href(`dataset/${Astro.props.slug}/`);
+const canonical = Astro.site ? new URL(destination, Astro.site).href : destination;
 ---
-<ResearchLayout entry={entry}>
-  {Explorer && <Explorer slot="explorer"/>}
-  <div data-locale="zh" lang="zh-CN"><Content /></div>
-  <div data-locale="en" lang="en"><EnglishContent /></div>
-</ResearchLayout>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Page moved</title>
+    <meta name="robots" content="noindex" />
+    <link rel="canonical" href={canonical} />
+    <script is:inline define:vars={{ destination }}>
+      window.location.replace(destination + window.location.search + window.location.hash);
+    </script>
+    <noscript><meta http-equiv="refresh" content={`0;url=${destination}`} /></noscript>
+  </head>
+  <body><a href={destination}>Continue to the dataset</a></body>
+</html>
