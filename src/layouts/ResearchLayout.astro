@@ -1,6 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import { ArrowRight, ArrowUpRight, ChevronRight, Download, FileArchive, FileText, Database } from '@lucide/astro';
+import { ArrowRight, ArrowUp, ArrowUpRight, ChevronRight, Download, FileArchive, FileText, Database } from '@lucide/astro';
 import SiteLayout from './SiteLayout.astro';
 import Citation from '../components/Citation.astro';
 import { href } from '../lib/site';
@@ -16,7 +16,7 @@ const fullDatasetPath = data.datasetArchivePath || data.datasetPath;
     <div class="container">
       <nav class="breadcrumb" {...attrs('aria-label', '面包屑', 'Breadcrumb')}><a href={href('/')}><T zh="科研成果" en="Research"/></a><ChevronRight size={13}/><span><T zh={data.title} en={data.englishTitle}/></span></nav>
       <div class="tags"><span class="tag tag-green"><T zh={data.status} en={data.en.status}/></span><span class="tag tag-neutral">v{data.version}</span>{data.tags.map((tag, index) => <span class="tag tag-neutral"><T zh={tag} en={data.en.tags[index]}/></span>)}</div>
-      <h1><T zh={data.title} en={data.englishTitle}/></h1><p class="research-english" lang="en" data-locale="zh">{data.englishTitle}</p><p class="summary"><T zh={data.summary} en={data.en.summary}/></p>
+      <h1 tabindex="-1"><T zh={data.title} en={data.englishTitle}/></h1><p class="research-english" lang="en" data-locale="zh">{data.englishTitle}</p><p class="summary"><T zh={data.summary} en={data.en.summary}/></p>
       {data.authors.length > 0 && <p class="muted">{data.authors.join(' · ')}</p>}
       <div class="actions">
         {data.tool && <a class="button button-primary" href="#explorer"><T zh="在线使用" en="Open explorer"/> <ArrowRight size={16}/></a>}
@@ -27,7 +27,13 @@ const fullDatasetPath = data.datasetArchivePath || data.datasetPath;
     </div>
   </section>
   <nav class="research-tabs" {...attrs('aria-label', '成果页内导航', 'Research sections')}><div class="container">
+    <div class="research-tab-links">
     <a href="#overview"><T zh="成果概述" en="Overview"/></a>{data.tool && <a href="#explorer"><T zh="在线工具" en="Explorer"/></a>}{data.datasetPath && <a href="#downloads"><T zh="数据下载" en="Downloads"/></a>}<a href="#citation"><T zh="引用与版本" en="Citation"/></a>
+    </div>
+    <button type="button" class="icon-button back-to-top" {...attrs('aria-label', '回到顶部', 'Back to top')}>
+      <ArrowUp size={18} aria-hidden="true"/>
+      <span class="back-to-top-tooltip" aria-hidden="true"><T zh="回到顶部" en="Back to top"/></span>
+    </button>
   </div></nav>
   <slot name="explorer"/>
   <section id="overview" class="section"><div class="container">
@@ -48,6 +54,11 @@ const fullDatasetPath = data.datasetArchivePath || data.datasetPath;
 <script>
   const nav = document.querySelector<HTMLElement>('.research-tabs');
   if (nav) {
+    const backToTop = nav.querySelector<HTMLButtonElement>('.back-to-top');
+    backToTop?.addEventListener('click', () => {
+      document.querySelector<HTMLElement>('.research-intro h1')?.focus({ preventScroll: true });
+      window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
+    });
     const links = Array.from(nav.querySelectorAll<HTMLAnchorElement>('a[href^="#"]'));
     // The explorer precedes the overview in the document, unlike the menu order.
     const sections = Array.from(document.querySelectorAll<HTMLElement>('main section[id]'))
@@ -56,6 +67,7 @@ const fullDatasetPath = data.datasetArchivePath || data.datasetPath;
 
     const updateActiveSection = () => {
       pending = false;
+      nav.classList.toggle('is-stuck', nav.getBoundingClientRect().top <= 0);
       const root = document.documentElement;
       const offset = Math.max(nav.offsetHeight, parseFloat(getComputedStyle(root).scrollPaddingTop) || 0);
       let active: HTMLElement | undefined = sections[0];
@@ -96,9 +108,14 @@ const fullDatasetPath = data.datasetArchivePath || data.datasetPath;
   .research-english { font-size: 16px; color: #536580; margin-bottom: 15px; }
   .summary { max-width: 810px; font-size: 14px; color: var(--color-muted); margin-bottom: 24px; }
   .research-tabs { background: white; border-block: 1px solid var(--color-border); position: sticky; top: 0; z-index: 10; }
-  .research-tabs > div { display: flex; gap: 36px; }
+  .research-tabs > div { display: flex; align-items: center; gap: 24px; }
+  .research-tab-links { display: flex; gap: 36px; flex: 1; min-width: 0; }
   .research-tabs a { font-size: 14px; padding-block: 15px; white-space: nowrap; border-bottom: 2px solid transparent; }
   .research-tabs a[aria-current="location"] { color: var(--color-primary); border-bottom-color: var(--color-primary); }
+  .back-to-top { position: relative; flex-shrink: 0; color: var(--color-primary); visibility: hidden; }
+  .research-tabs.is-stuck .back-to-top { visibility: visible; }
+  .back-to-top-tooltip { position: absolute; top: calc(100% + 8px); right: 0; padding: 4px 8px; border-radius: 4px; background: var(--color-text); color: white; font-size: 12px; white-space: nowrap; visibility: hidden; pointer-events: none; }
+  .research-tabs.is-stuck .back-to-top:is(:hover, :focus-visible) .back-to-top-tooltip { visibility: visible; }
   .download-row { display: flex; align-items: center; gap: 22px; padding: 23px 0; border-top: 1px solid var(--color-border); }
   .download-row > svg { color: var(--color-primary); }
   .download-row > div { flex: 1; }
@@ -108,7 +125,8 @@ const fullDatasetPath = data.datasetArchivePath || data.datasetPath;
   @media (max-width: 700px) {
     h1 { font-size: 28px; }
     .research-english { font-size: 14px; }
-    .research-tabs > div { gap: 0; justify-content: space-between; }
+    .research-tabs > div { gap: 8px; }
+    .research-tab-links { gap: 8px; justify-content: space-between; }
     .research-tabs a { font-size: 12px; }
     .download-row { gap: 12px; flex-wrap: wrap; }
     .download-row .button { margin-left: 39px; }

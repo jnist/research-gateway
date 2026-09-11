@@ -63,5 +63,43 @@ for (const locale of ['zh-CN', 'en-US']) {
       await expect(page.locator('#statusText')).toContainText('717');
       await expectActiveSection(page, 'downloads');
     });
+
+    test('back to top appears only when sticky and preserves the menu layout', async ({ page }, testInfo) => {
+      await page.goto('dataset/hec/');
+      await expect(page.locator('#statusText')).toContainText('717');
+      const nav = page.locator('.research-tabs');
+      const button = nav.getByRole('button', { name: locale === 'zh-CN' ? '回到顶部' : 'Back to top', includeHidden: true });
+      await expect(button).toBeHidden();
+      const height = await nav.evaluate(node => node.getBoundingClientRect().height);
+      const linkPositions = await nav.locator('a').evaluateAll(links => links.map(link => link.getBoundingClientRect().x));
+      const threshold = await nav.evaluate(node => node.getBoundingClientRect().top + window.scrollY);
+      await page.evaluate(top => window.scrollTo({ top, behavior: 'instant' }), threshold - 2);
+      await expect(button).toBeHidden();
+      await page.evaluate(top => window.scrollTo({ top, behavior: 'instant' }), Math.ceil(threshold));
+      await expect(button).toBeVisible();
+      expect(await nav.evaluate(node => node.getBoundingClientRect().height)).toBe(height);
+      expect(await nav.locator('a').evaluateAll(links => links.map(link => link.getBoundingClientRect().x))).toEqual(linkPositions);
+      const buttonBox = (await button.boundingBox())!;
+      const lastLinkBox = (await nav.locator('a').last().boundingBox())!;
+      expect(buttonBox.x).toBeGreaterThanOrEqual(lastLinkBox.x + lastLinkBox.width);
+      expect(buttonBox.x + buttonBox.width).toBeLessThanOrEqual(page.viewportSize()!.width);
+      await page.screenshot({ path: testInfo.outputPath(`${locale}-back-to-top.png`) });
+      await button.click();
+      await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(0);
+      await expect(button).toBeHidden();
+      await expectActiveSection(page, 'explorer');
+    });
+
+    test('back to top works from a direct anchor with reduced motion and keyboard', async ({ page }) => {
+      await page.emulateMedia({ reducedMotion: 'reduce' });
+      await page.goto('dataset/hec/#downloads');
+      await expect(page.locator('#statusText')).toContainText('717');
+      const button = page.locator('.research-tabs').getByRole('button', { name: locale === 'zh-CN' ? '回到顶部' : 'Back to top' });
+      await expect(button).toBeVisible();
+      await button.focus();
+      await page.keyboard.press('Enter');
+      await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(0);
+      await expect(button).toBeHidden();
+    });
   });
 }
