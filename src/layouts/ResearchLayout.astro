@@ -26,7 +26,7 @@ const data = entry.data;
     </div>
   </section>
   <nav class="research-tabs" {...attrs('aria-label', '成果页内导航', 'Research sections')}><div class="container">
-    <a href="#overview"><T zh="成果概述" en="Overview"/></a>{data.tool && <a class="tool-tab" href="#explorer"><T zh="在线工具" en="Explorer"/></a>}{data.datasetPath && <a href="#downloads"><T zh="数据下载" en="Downloads"/></a>}<a href="#citation"><T zh="引用与版本" en="Citation"/></a>
+    <a href="#overview"><T zh="成果概述" en="Overview"/></a>{data.tool && <a href="#explorer"><T zh="在线工具" en="Explorer"/></a>}{data.datasetPath && <a href="#downloads"><T zh="数据下载" en="Downloads"/></a>}<a href="#citation"><T zh="引用与版本" en="Citation"/></a>
   </div></nav>
   <slot name="explorer"/>
   <section id="overview" class="section"><div class="container">
@@ -44,6 +44,50 @@ const data = entry.data;
     <Citation citation={data.citation} bibtex={data.bibtex}/>
   </div></section>
 </SiteLayout>
+<script>
+  const nav = document.querySelector<HTMLElement>('.research-tabs');
+  if (nav) {
+    const links = Array.from(nav.querySelectorAll<HTMLAnchorElement>('a[href^="#"]'));
+    // The explorer precedes the overview in the document, unlike the menu order.
+    const sections = Array.from(document.querySelectorAll<HTMLElement>('main section[id]'))
+      .filter(section => links.some(link => link.hash === `#${section.id}`));
+    let pending = false;
+
+    const updateActiveSection = () => {
+      pending = false;
+      const root = document.documentElement;
+      const offset = Math.max(nav.offsetHeight, parseFloat(getComputedStyle(root).scrollPaddingTop) || 0);
+      let active: HTMLElement | undefined = sections[0];
+      for (const section of sections) {
+        const margin = parseFloat(getComputedStyle(section).scrollMarginTop) || 0;
+        // Allow a small preceding-section tail above the main reading area.
+        const activationLine = Math.max(offset + margin + 1, window.innerHeight * 0.25);
+        if (section.getBoundingClientRect().top <= activationLine) active = section;
+      }
+      // Short final sections may never reach the activation line.
+      if (window.scrollY > 0 && Math.ceil(window.scrollY + window.innerHeight) >= root.scrollHeight - 1) {
+        active = sections.at(-1);
+      }
+      for (const link of links) {
+        if (active && link.hash === `#${active.id}`) link.setAttribute('aria-current', 'location');
+        else link.removeAttribute('aria-current');
+      }
+    };
+    const scheduleUpdate = () => {
+      if (pending) return;
+      pending = true;
+      requestAnimationFrame(updateActiveSection);
+    };
+    window.addEventListener('scroll', scheduleUpdate, { passive: true });
+    window.addEventListener('resize', scheduleUpdate);
+    window.addEventListener('hashchange', scheduleUpdate);
+    window.addEventListener('pageshow', scheduleUpdate);
+    const observer = new ResizeObserver(scheduleUpdate);
+    observer.observe(nav);
+    for (const section of sections) observer.observe(section);
+    updateActiveSection();
+  }
+</script>
 <style>
   .research-intro { padding-block: 26px 36px; background: #f6f8fb; }
   .breadcrumb { display: flex; align-items: center; gap: 9px; font-size: 12px; color: var(--color-muted); margin-bottom: 27px; }
@@ -52,8 +96,8 @@ const data = entry.data;
   .summary { max-width: 810px; font-size: 14px; color: var(--color-muted); margin-bottom: 24px; }
   .research-tabs { background: white; border-block: 1px solid var(--color-border); position: sticky; top: 0; z-index: 10; }
   .research-tabs > div { display: flex; gap: 36px; }
-  .research-tabs a { font-size: 14px; padding-block: 15px; white-space: nowrap; }
-  .tool-tab { color: var(--color-primary); border-bottom: 2px solid var(--color-primary); }
+  .research-tabs a { font-size: 14px; padding-block: 15px; white-space: nowrap; border-bottom: 2px solid transparent; }
+  .research-tabs a[aria-current="location"] { color: var(--color-primary); border-bottom-color: var(--color-primary); }
   .download-row { display: flex; align-items: center; gap: 22px; padding: 23px 0; border-top: 1px solid var(--color-border); }
   .download-row > svg { color: var(--color-primary); }
   .download-row > div { flex: 1; }
