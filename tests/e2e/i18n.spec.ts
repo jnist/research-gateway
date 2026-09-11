@@ -24,7 +24,7 @@ test.describe('English interface', () => {
   test('all pages render in English without overflow or browser errors', async ({ page }, testInfo) => {
     const errors: string[] = [];
     page.on('pageerror', error => errors.push(error.message));
-    for (const path of ['./', 'about/', 'research/hec/', '404.html']) {
+    for (const path of ['./', 'about/', '2026/hec/', '404.html']) {
       await page.goto(path);
       await expect(page.locator('html')).toHaveAttribute('lang', 'en');
       await expect(page.getByRole('combobox', { name: 'Language', exact: true })).toBeVisible();
@@ -35,7 +35,7 @@ test.describe('English interface', () => {
       }
       expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(page.viewportSize()!.width);
       await page.screenshot({ path: testInfo.outputPath(`en-${path.replaceAll('/', '-')}.png`), fullPage: true });
-      if (path === 'research/hec/' && testInfo.project.name === 'desktop') {
+      if (path === '2026/hec/' && testInfo.project.name === 'desktop') {
         await expect(page.locator('#statusText')).toContainText('717');
         await page.locator('#periodicTable [data-symbol="Hf"]').click();
         const viewport = page.viewportSize()!;
@@ -70,7 +70,7 @@ test.describe('English interface', () => {
   });
 
   test('language controls and element labels fit narrow and intermediate widths', async ({ page }) => {
-    await page.goto('research/hec/');
+    await page.goto('2026/hec/');
     await expect(page.locator('#statusText')).toContainText('717');
     for (const width of [320, 720, 800, 1024]) {
       await page.setViewportSize({ width, height: 900 });
@@ -89,7 +89,7 @@ test.describe('English interface', () => {
   });
 
   test('switch preserves filters, pagination, downloads and local data', async ({ page }) => {
-    await page.goto('research/hec/#explorer');
+    await page.goto('2026/hec/#explorer');
     await expect(page.locator('#statusText')).toContainText('717');
     await page.locator('#periodicTable [data-symbol="O"]').click();
     await page.locator('#nextPage').click();
@@ -120,7 +120,7 @@ test.describe('English interface', () => {
   });
 
   test('search accepts both element languages and translates active errors', async ({ page }) => {
-    await page.goto('research/hec/');
+    await page.goto('2026/hec/');
     await expect(page.locator('#statusText')).toContainText('717');
     await page.locator('#elementSearch').fill('hafnium');
     await page.locator('#elementSearch').press('Enter');
@@ -164,7 +164,7 @@ test('without JavaScript static content defaults to English', async ({ browser, 
   const context = await browser.newContext({ javaScriptEnabled: false, locale: 'zh-CN' });
   const page = await context.newPage();
   try {
-    await page.goto(`${baseURL}research/hec/`);
+    await page.goto(`${baseURL}2026/hec/`);
     await expect(page.locator('html')).toHaveAttribute('lang', 'en');
     await expect(page.locator('h1')).toHaveText('High-Entropy Ceramics Database', { useInnerText: true });
     await expect(page.getByRole('link', { name: 'Download CSV', exact: true })).toBeVisible();

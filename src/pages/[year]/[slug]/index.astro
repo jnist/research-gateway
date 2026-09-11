@@ -3,7 +3,10 @@ import { getCollection, getEntry, render } from 'astro:content';
 import ResearchLayout from '../../../layouts/ResearchLayout.astro';
 import { tools, type ToolId } from '../../../features/registry';
 export async function getStaticPaths() {
-  return (await getCollection('research')).map(entry => ({ params: { slug: entry.id }, props: { entry } }));
+  return (await getCollection('research')).map(entry => ({
+    params: { year: String(entry.data.year), slug: entry.id },
+    props: { entry },
+  }));
 }
 const { entry } = Astro.props;
 const { Content } = await render(entry);

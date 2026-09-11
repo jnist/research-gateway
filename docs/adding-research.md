@@ -2,13 +2,15 @@
 
 ## 新增研究页
 
-1. 从 `src/content/research/hec.md` 复制一份 Markdown，使用稳定、唯一的 kebab-case 文件名作为研究 slug。
+1. 从 `src/content/research/hec.md` 复制一份 Markdown，使用稳定、唯一的 kebab-case 文件名作为研究 slug。成果页地址由 `year` 和 slug 生成，如 `/2026/hec/`；内容文件仍放在原目录。
 2. 对照仓库当前 content schema 填写必填元数据与中文正文；`en` 提供英文摘要、状态、标签、图片描述及许可说明。另在 `src/content/research-en/<slug>.md` 提供英文正文，文件名必须与中文一致。作者、机构、论文状态、DOI 和下载地址必须有来源，未确认的信息留空或按 schema 省略。
 3. 纯介绍页沿用共享研究模板，省略 `tool` 字段。需要交互模块时，在 `src/features/registry.ts` 导入对应 Astro component，并让注册键与 Markdown 的 `tool` 一致；页面 slug 来自文件名，不要求与工具键相同。不要将 HEC 专用逻辑塞入共享模板。
 4. 经授权发布的资源放到 `public/data/<slug>/<version>/`。所有 `public/` 内容都可能进入成品站点，不放原始压缩包、草稿、内部材料或密钥。
 5. 用 `npm run check`、`npm test`、`npm run validate:data` 检查内容和资源，再执行下方两个 base 的 build 与 e2e。
 
 schema、模块注册方式与共享组件以当前代码为准；修改通用字段时同步维护现有研究页与测试。不要为了展示效果添加虚构研究、作者或出版信息。
+
+旧的 `/research/<slug>/` 地址跳转到对应的年份路径。已发布成果的 `year` 也是地址的一部分，修改年份时应保留原年份地址的跳转。
 
 必填字段：`title`、`englishTitle`、`summary`、`year`、`status`、`version`、
 `tags`、`image`、`imageAlt`、`citation`、`licenseNote`、`en`。`en` 包含
@@ -66,8 +68,8 @@ npm run check
 npm test
 npm run validate:data
 npx playwright install chromium
-SITE_URL=https://jnist.github.io SITE_BASE=/ npm run build
-SITE_URL=https://jnist.github.io SITE_BASE=/ npm run test:e2e
+SITE_URL=https://research.jnist.cn SITE_BASE=/ npm run build
+SITE_URL=https://research.jnist.cn SITE_BASE=/ npm run test:e2e
 SITE_URL=https://jnist.github.io SITE_BASE=/research-gateway/ npm run build
 SITE_URL=https://jnist.github.io SITE_BASE=/research-gateway/ npm run test:e2e
 ```

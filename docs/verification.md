@@ -1,5 +1,14 @@
 # 验证记录
 
+## 2026-09-11 自定义域名根路径修复
+
+- 线上首页的 canonical 指向 `https://jnist.github.io/research-gateway/`，导航与资源地址包含 `/research-gateway/`；对应发布 job 的旧默认配置。
+- 正式发布固定 `SITE_URL=https://research.jnist.cn`、`SITE_BASE=/`，不再读取旧 repository variables。子路径仅保留作兼容性测试。
+- Astro 默认站点地址同步为自定义域名；新增部署路径回归，检查 canonical、导航及脚本/样式资源的 HTTP 状态。
+- 工作流 YAML 解析与发布配置断言通过；Astro check 无错误、警告或提示，23 项单元测试全部通过。
+- 正式根路径及项目子路径分别构建成功，Playwright 均为 57 项通过、1 项条件跳过。
+- 本次未修改 GitHub Pages 设置、DNS，未提交或推送。线上修复需发布新构建。
+
 ## 2026-09-11 提交前检查
 
 - 重新运行 Astro check 与 23 项单元测试，全部通过。

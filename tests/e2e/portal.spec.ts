@@ -10,7 +10,7 @@ const tinyCsv = 'Sorted Json formula,prototype,prototype_formula,DOIs\r\n"{""A""
 test('home and research pages load with working images and no horizontal overflow', async ({ page }, testInfo) => {
   const errors: string[] = [];
   page.on('pageerror', error => errors.push(error.message));
-  for (const path of ['', 'research/hec/', 'about/']) {
+  for (const path of ['', '2026/hec/', 'about/']) {
     await page.goto(path);
     await expect(page.locator('h1')).toBeVisible();
     await page.evaluate(() => document.fonts.ready);
@@ -27,7 +27,7 @@ test('home and research pages load with working images and no horizontal overflo
 test('navigation reaches research directly and the official CSV loads', async ({ page }) => {
   await page.goto('');
   await page.getByRole('link', { name: '查看成果', exact: true }).click();
-  await expect(page).toHaveURL(/research\/hec\/$/);
+  await expect(page).toHaveURL(/2026\/hec\/$/);
   await expect(page.locator('#statusText')).toContainText('717 条记录');
   await expect(page.locator('#resultsBody tr')).toHaveCount(0);
   await expect(page.locator('#exportResults')).toBeDisabled();
@@ -45,7 +45,7 @@ test('skip link is hidden until keyboard focus', async ({ page }) => {
 
 test.beforeEach(async ({ page }, testInfo) => {
   if (testInfo.title.startsWith('home') || testInfo.title.startsWith('navigation') || testInfo.title.startsWith('mobile navigation')) return;
-  await page.goto('research/hec/');
+  await page.goto('2026/hec/');
   await expect(page.locator('#statusText')).toContainText('717 条记录');
 });
 

@@ -81,7 +81,8 @@ test('preserves legacy formula formatting and escapes HTML attributes', () => {
 });
 
 test('joins root, project, and encoded resource paths consistently', () => {
-  assert.equal(assetPath('/', 'research/hec/'), '/research/hec/');
+  assert.equal(assetPath('/', '2026/hec/'), '/2026/hec/');
+  assert.equal(assetPath('/research-gateway/', '2026/hec/'), '/research-gateway/2026/hec/');
   assert.equal(assetPath('/research-gateway/', '/data/hec/v1.0/dataset.csv'), '/research-gateway/data/hec/v1.0/dataset.csv');
 });
 

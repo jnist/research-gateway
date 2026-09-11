@@ -28,10 +28,13 @@ jobs:
         include:
           - target: root
             base: /
+            site: https://research.jnist.cn
+          # Compatibility check only; this target is never deployed.
           - target: project
             base: /research-gateway/
+            site: https://jnist.github.io
     env:
-      SITE_URL: https://jnist.github.io
+      SITE_URL: ${{ matrix.site }}
       SITE_BASE: ${{ matrix.base }}
     steps:
       - name: Checkout
@@ -72,8 +75,9 @@ jobs:
       contents: read
       pages: read
     env:
-      SITE_URL: ${{ vars.SITE_URL || 'https://jnist.github.io' }}
-      SITE_BASE: ${{ vars.SITE_BASE || '/research-gateway/' }}
+      # This repository has its own custom domain, served from the domain root.
+      SITE_URL: https://research.jnist.cn
+      SITE_BASE: /
     steps:
       - name: Checkout
         uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6

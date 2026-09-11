@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 test.use({ locale: 'zh-CN' });
 
-for (const route of ['', 'about/', 'research/hec/']) {
+for (const route of ['', 'about/', '2026/hec/']) {
   test(`footer registration links on /${route}`, async ({ page }, testInfo) => {
     await page.goto(route || './');
     const footer = page.locator('.site-footer');
@@ -27,7 +27,7 @@ for (const route of ['', 'about/', 'research/hec/']) {
       await expect(page.getByText('本门户集中展示科研成果', { exact: false })).toHaveCount(0);
       await footer.screenshot({ path: testInfo.outputPath('footer.png') });
     }
-    if (route === 'research/hec/') {
+    if (route === '2026/hec/') {
       await expect(page.locator('#overview')).not.toContainText('未选择元素时不显示结果');
       await expect(page.locator('#overview')).not.toContainText('本地文件仅在浏览器中读取');
       await expect(page.locator('#citation .version-note')).toHaveCount(0);
