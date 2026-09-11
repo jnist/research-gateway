@@ -113,7 +113,8 @@ test('complete dataset ZIP downloads unchanged in both languages', async ({ page
     const downloadPromise = page.waitForEvent('download');
     await link.click();
     const download = await downloadPromise;
-    expect(download.suggestedFilename()).toBe('hec/hec-v1.0.zip');
+    expect(download.url()).toBe(new URL('data/hec/hec-v1.0.zip', baseURL).href);
+    expect(download.suggestedFilename()).toBe('hec-v1.0.zip');
     expect(checksum(await readFile((await download.path())!))).toBe(checksum(original));
     await page.locator('#downloads').evaluate(node => node.scrollIntoView({ behavior: 'instant' }));
     await page.screenshot({ path: testInfo.outputPath(`downloads-${locale}.png`) });
@@ -127,7 +128,8 @@ test('intro full dataset action downloads the ZIP archive', async ({ page, baseU
   const downloadPromise = page.waitForEvent('download');
   await link.click();
   const download = await downloadPromise;
-  expect(download.suggestedFilename()).toBe('hec/hec-v1.0.zip');
+  expect(download.url()).toBe(new URL('data/hec/hec-v1.0.zip', baseURL).href);
+  expect(download.suggestedFilename()).toBe('hec-v1.0.zip');
   const original = await readFile(new URL('../../public/data/hec/hec-v1.0.zip', import.meta.url));
   expect((await readFile((await download.path())!)).equals(original)).toBe(true);
 });
