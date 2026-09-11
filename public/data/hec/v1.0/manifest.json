@@ -1,0 +1,16 @@
+{
+  "name": "High-Entropy Ceramics Database",
+  "version": "1.0",
+  "importedAt": "2026-09-10",
+  "source": "User-provided Frontend release; original release date unspecified",
+  "dataset": "dataset.csv",
+  "records": 717,
+  "elements": 66,
+  "prototypes": 26,
+  "cifFiles": 671,
+  "supercellFiles": 671,
+  "sha256": "91abf3a7de953e40ad5d4616ada5ed99877c1b6d0f7241b870b4c4ff3d70822f",
+  "codeLicense": "MIT",
+  "dataLicense": "Not specified in the source release. Confirm with the authors before redistribution.",
+  "structureIndex": "Original zero-based CSV record position; never local imported row position"
+}

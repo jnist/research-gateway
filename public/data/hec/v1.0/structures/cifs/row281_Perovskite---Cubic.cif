@@ -1,0 +1,40 @@
+# generated using pymatgen
+data_K0.1Na0.1Sr0.2Li0.1Ca0.2La0.1Ce0.1Ti1Bi0.1O3
+_symmetry_space_group_name_H-M   'P 1'
+_cell_length_a   3.91587520
+_cell_length_b   3.91842862
+_cell_length_c   3.91865724
+_cell_angle_alpha   90.00489868
+_cell_angle_beta   90.00230273
+_cell_angle_gamma   89.99711863
+_symmetry_Int_Tables_number   1
+_chemical_formula_structural
+K0.1Na0.1Sr0.2Li0.1Ca0.2La0.1Ce0.1Ti1Bi0.1O3
+_chemical_formula_sum
+'K0.1 Na0.1 Sr0.2 Li0.1 Ca0.2 La0.1 Ce0.1 Ti1 Bi0.1 O3'
+_cell_volume   60.12818000
+_cell_formula_units_Z   1
+loop_
+ _symmetry_equiv_pos_site_id
+ _symmetry_equiv_pos_as_xyz
+  1  'x, y, z'
+loop_
+ _atom_site_type_symbol
+ _atom_site_label
+ _atom_site_symmetry_multiplicity
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_occupancy
+  K  K0  1  0.00000000  0.00000000  0.00000000  0.1
+  Na  Na1  1  0.00000000  0.00000000  0.00000000  0.1
+  Sr  Sr2  1  0.00000000  0.00000000  0.00000000  0.2
+  Li  Li3  1  0.00000000  0.00000000  0.00000000  0.1
+  Ca  Ca4  1  0.00000000  0.00000000  0.00000000  0.2
+  La  La5  1  0.00000000  0.00000000  0.00000000  0.1
+  Ce  Ce6  1  0.00000000  0.00000000  0.00000000  0.1
+  Bi  Bi7  1  0.00000000  0.00000000  0.00000000  0.1
+  Ti  Ti8  1  0.50000000  0.50000000  0.50000000  1.0
+  O  O9  1  0.50000000  0.00000000  0.50000000  1.0
+  O  O10  1  0.50000000  0.50000000  0.00000000  1.0
+  O  O11  1  0.00000000  0.50000000  0.50000000  1.0

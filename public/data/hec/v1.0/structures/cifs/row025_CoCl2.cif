@@ -1,0 +1,47 @@
+# generated using pymatgen
+data_Mn0.6V0.6Fe0.6Co0.6Ni0.6Cl6
+_symmetry_space_group_name_H-M   'P 1'
+_cell_length_a   3.57519521
+_cell_length_b   3.57539912
+_cell_length_c   18.13962953
+_cell_angle_alpha   89.99493429
+_cell_angle_beta   89.99449046
+_cell_angle_gamma   119.99545913
+_symmetry_Int_Tables_number   1
+_chemical_formula_structural   Mn0.6V0.6Fe0.6Co0.6Ni0.6Cl6
+_chemical_formula_sum   'Mn0.6 V0.6 Fe0.6 Co0.6 Ni0.6 Cl6'
+_cell_volume   200.81825834
+_cell_formula_units_Z   1
+loop_
+ _symmetry_equiv_pos_site_id
+ _symmetry_equiv_pos_as_xyz
+  1  'x, y, z'
+loop_
+ _atom_site_type_symbol
+ _atom_site_label
+ _atom_site_symmetry_multiplicity
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_occupancy
+  Mn  Mn0  1  0.00000000  0.00000000  0.00000000  0.2
+  V  V1  1  0.00000000  0.00000000  0.00000000  0.2
+  Fe  Fe2  1  0.00000000  0.00000000  0.00000000  0.2
+  Co  Co3  1  0.00000000  0.00000000  0.00000000  0.2
+  Ni  Ni4  1  0.00000000  0.00000000  0.00000000  0.2
+  Mn  Mn5  1  0.66666667  0.33333333  0.33333333  0.2
+  V  V6  1  0.66666667  0.33333333  0.33333333  0.2
+  Fe  Fe7  1  0.66666667  0.33333333  0.33333333  0.2
+  Co  Co8  1  0.66666667  0.33333333  0.33333333  0.2
+  Ni  Ni9  1  0.66666667  0.33333333  0.33333333  0.2
+  Mn  Mn10  1  0.33333333  0.66666667  0.66666667  0.2
+  V  V11  1  0.33333333  0.66666667  0.66666667  0.2
+  Fe  Fe12  1  0.33333333  0.66666667  0.66666667  0.2
+  Co  Co13  1  0.33333333  0.66666667  0.66666667  0.2
+  Ni  Ni14  1  0.33333333  0.66666667  0.66666667  0.2
+  Cl  Cl15  1  0.66666667  0.33333333  0.07415122  1.0
+  Cl  Cl16  1  0.00000000  0.00000000  0.25918211  1.0
+  Cl  Cl17  1  0.33333333  0.66666667  0.40748456  1.0
+  Cl  Cl18  1  0.66666667  0.33333333  0.59251544  1.0
+  Cl  Cl19  1  0.00000000  0.00000000  0.74081789  1.0
+  Cl  Cl20  1  0.33333333  0.66666667  0.92584878  1.0

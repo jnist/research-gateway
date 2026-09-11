@@ -1,0 +1,17 @@
+:root {
+  --color-primary: #2053a0;
+  --color-primary-dark: #153c79;
+  --color-text: #222b35;
+  --color-muted: #63707f;
+  --color-border: #dce2e9;
+  --color-background: #f5f7fa;
+  --color-surface: #fff;
+  --color-teal: #27766d;
+  --color-ochre: #98651d;
+  --color-danger: #b63636;
+  --radius-control: 4px;
+  --width-content: 1200px;
+  --width-tool: 1360px;
+  --font-body: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", system-ui, sans-serif;
+  --font-mono: "SFMono-Regular", Consolas, monospace;
+}

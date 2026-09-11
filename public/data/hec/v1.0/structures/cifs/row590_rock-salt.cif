@@ -1,0 +1,46 @@
+# generated using pymatgen
+data_Ag0.4Ge3.2Bi0.2Sb0.2Te4
+_symmetry_space_group_name_H-M   'P 1'
+_cell_length_a   6.04971627
+_cell_length_b   6.05789757
+_cell_length_c   6.06417933
+_cell_angle_alpha   89.93673805
+_cell_angle_beta   89.96483799
+_cell_angle_gamma   89.98942263
+_symmetry_Int_Tables_number   1
+_chemical_formula_structural   Ag0.4Ge3.2Bi0.2Sb0.2Te4
+_chemical_formula_sum   'Ag0.4 Ge3.2 Bi0.2 Sb0.2 Te4'
+_cell_volume   222.24326813
+_cell_formula_units_Z   1
+loop_
+ _symmetry_equiv_pos_site_id
+ _symmetry_equiv_pos_as_xyz
+  1  'x, y, z'
+loop_
+ _atom_site_type_symbol
+ _atom_site_label
+ _atom_site_symmetry_multiplicity
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_occupancy
+  Ag  Ag0  1  0.00000000  0.00000000  0.00000000  0.1
+  Ge  Ge1  1  0.00000000  0.00000000  0.00000000  0.8
+  Bi  Bi2  1  0.00000000  0.00000000  0.00000000  0.05
+  Sb  Sb3  1  0.00000000  0.00000000  0.00000000  0.05
+  Ag  Ag4  1  0.50000000  0.50000000  0.00000000  0.1
+  Ge  Ge5  1  0.50000000  0.50000000  0.00000000  0.8
+  Bi  Bi6  1  0.50000000  0.50000000  0.00000000  0.05
+  Sb  Sb7  1  0.50000000  0.50000000  0.00000000  0.05
+  Ag  Ag8  1  0.50000000  0.00000000  0.50000000  0.1
+  Ge  Ge9  1  0.50000000  0.00000000  0.50000000  0.8
+  Bi  Bi10  1  0.50000000  0.00000000  0.50000000  0.05
+  Sb  Sb11  1  0.50000000  0.00000000  0.50000000  0.05
+  Ag  Ag12  1  0.00000000  0.50000000  0.50000000  0.1
+  Ge  Ge13  1  0.00000000  0.50000000  0.50000000  0.8
+  Bi  Bi14  1  0.00000000  0.50000000  0.50000000  0.05
+  Sb  Sb15  1  0.00000000  0.50000000  0.50000000  0.05
+  Te  Te16  1  0.00000000  0.50000000  0.00000000  1.0
+  Te  Te17  1  0.50000000  0.00000000  0.00000000  1.0
+  Te  Te18  1  0.00000000  0.00000000  0.50000000  1.0
+  Te  Te19  1  0.50000000  0.50000000  0.50000000  1.0

@@ -1,0 +1,42 @@
+# generated using pymatgen
+data_Li2Mn0.4Cr0.4Fe0.4Co0.4Ni0.4O4
+_symmetry_space_group_name_H-M   'P 1'
+_cell_length_a   2.91010326
+_cell_length_b   2.91408967
+_cell_length_c   10.10849879
+_cell_angle_alpha   90.01641508
+_cell_angle_beta   89.99826809
+_cell_angle_gamma   119.97988571
+_symmetry_Int_Tables_number   1
+_chemical_formula_structural   Li2Mn0.4Cr0.4Fe0.4Co0.4Ni0.4O4
+_chemical_formula_sum   'Li2 Mn0.4 Cr0.4 Fe0.4 Co0.4 Ni0.4 O4'
+_cell_volume   74.25343926
+_cell_formula_units_Z   1
+loop_
+ _symmetry_equiv_pos_site_id
+ _symmetry_equiv_pos_as_xyz
+  1  'x, y, z'
+loop_
+ _atom_site_type_symbol
+ _atom_site_label
+ _atom_site_symmetry_multiplicity
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_occupancy
+  Li  Li0  1  0.66666667  0.33333333  0.25000000  1.0
+  Li  Li1  1  0.33333333  0.66666667  0.75000000  1.0
+  Mn  Mn2  1  0.00000000  0.00000000  0.50000000  0.2
+  Cr  Cr3  1  0.00000000  0.00000000  0.50000000  0.2
+  Fe  Fe4  1  0.00000000  0.00000000  0.50000000  0.2
+  Co  Co5  1  0.00000000  0.00000000  0.50000000  0.2
+  Ni  Ni6  1  0.00000000  0.00000000  0.50000000  0.2
+  Mn  Mn7  1  0.00000000  0.00000000  0.00000000  0.2
+  Cr  Cr8  1  0.00000000  0.00000000  0.00000000  0.2
+  Fe  Fe9  1  0.00000000  0.00000000  0.00000000  0.2
+  Co  Co10  1  0.00000000  0.00000000  0.00000000  0.2
+  Ni  Ni11  1  0.00000000  0.00000000  0.00000000  0.2
+  O  O12  1  0.33333333  0.66666667  0.40482104  1.0
+  O  O13  1  0.66666667  0.33333333  0.59517896  1.0
+  O  O14  1  0.66666667  0.33333333  0.90482104  1.0
+  O  O15  1  0.33333333  0.66666667  0.09517896  1.0

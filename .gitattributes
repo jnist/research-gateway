@@ -1,0 +1,2 @@
+# Published snapshots retain their original bytes, including upstream line endings.
+/public/data/hec/v1.0/** -text -whitespace

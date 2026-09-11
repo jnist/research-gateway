@@ -1,0 +1,6 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import { href } from '../lib/site';
+import T from '../components/T.astro';
+---
+<SiteLayout title="页面未找到" titleEn="Page not found"><section class="section container"><p class="eyebrow">404 / NOT FOUND</p><h1><T zh="页面未找到" en="Page not found"/></h1><p class="muted"><T zh="该页面可能已移动，或链接地址有误。" en="This page may have moved, or the address may be incorrect."/></p><a class="button button-primary" href={href('/')}><T zh="返回科研成果" en="Back to research"/></a></section></SiteLayout>

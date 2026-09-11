@@ -1,0 +1,46 @@
+# generated using pymatgen
+data_MgZnCuNiO4
+_symmetry_space_group_name_H-M   'P 1'
+_cell_length_a   4.28634592
+_cell_length_b   4.28869744
+_cell_length_c   4.29088214
+_cell_angle_alpha   89.99187812
+_cell_angle_beta   90.02969125
+_cell_angle_gamma   89.97770118
+_symmetry_Int_Tables_number   1
+_chemical_formula_structural   MgZnCuNiO4
+_chemical_formula_sum   'Mg1 Zn1 Cu1 Ni1 O4'
+_cell_volume   78.87858581
+_cell_formula_units_Z   1
+loop_
+ _symmetry_equiv_pos_site_id
+ _symmetry_equiv_pos_as_xyz
+  1  'x, y, z'
+loop_
+ _atom_site_type_symbol
+ _atom_site_label
+ _atom_site_symmetry_multiplicity
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_occupancy
+  Mg  Mg0  1  0.00000000  0.00000000  0.00000000  0.25
+  Zn  Zn1  1  0.00000000  0.00000000  0.00000000  0.25
+  Cu  Cu2  1  0.00000000  0.00000000  0.00000000  0.25
+  Ni  Ni3  1  0.00000000  0.00000000  0.00000000  0.25
+  Mg  Mg4  1  0.50000000  0.50000000  0.00000000  0.25
+  Zn  Zn5  1  0.50000000  0.50000000  0.00000000  0.25
+  Cu  Cu6  1  0.50000000  0.50000000  0.00000000  0.25
+  Ni  Ni7  1  0.50000000  0.50000000  0.00000000  0.25
+  Mg  Mg8  1  0.50000000  0.00000000  0.50000000  0.25
+  Zn  Zn9  1  0.50000000  0.00000000  0.50000000  0.25
+  Cu  Cu10  1  0.50000000  0.00000000  0.50000000  0.25
+  Ni  Ni11  1  0.50000000  0.00000000  0.50000000  0.25
+  Mg  Mg12  1  0.00000000  0.50000000  0.50000000  0.25
+  Zn  Zn13  1  0.00000000  0.50000000  0.50000000  0.25
+  Cu  Cu14  1  0.00000000  0.50000000  0.50000000  0.25
+  Ni  Ni15  1  0.00000000  0.50000000  0.50000000  0.25
+  O  O16  1  0.00000000  0.50000000  0.00000000  1.0
+  O  O17  1  0.50000000  0.00000000  0.00000000  1.0
+  O  O18  1  0.00000000  0.00000000  0.50000000  1.0
+  O  O19  1  0.50000000  0.50000000  0.50000000  1.0

@@ -1,0 +1,33 @@
+# generated using pymatgen
+data_Hf0.2Zr0.2Ta0.2Ti0.2B2W0.2
+_symmetry_space_group_name_H-M   'P 1'
+_cell_length_a   3.10061871
+_cell_length_b   3.10021889
+_cell_length_c   3.38099376
+_cell_angle_alpha   90.01016092
+_cell_angle_beta   89.99831047
+_cell_angle_gamma   119.99542155
+_symmetry_Int_Tables_number   1
+_chemical_formula_structural   Hf0.2Zr0.2Ta0.2Ti0.2B2W0.2
+_chemical_formula_sum   'Hf0.2 Zr0.2 Ta0.2 Ti0.2 B2 W0.2'
+_cell_volume   28.14723569
+_cell_formula_units_Z   1
+loop_
+ _symmetry_equiv_pos_site_id
+ _symmetry_equiv_pos_as_xyz
+  1  'x, y, z'
+loop_
+ _atom_site_type_symbol
+ _atom_site_label
+ _atom_site_symmetry_multiplicity
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_occupancy
+  Hf  Hf0  1  0.00000000  0.00000000  0.00000000  0.2
+  Zr  Zr1  1  0.00000000  0.00000000  0.00000000  0.2
+  Ta  Ta2  1  0.00000000  0.00000000  0.00000000  0.2
+  Ti  Ti3  1  0.00000000  0.00000000  0.00000000  0.2
+  W  W4  1  0.00000000  0.00000000  0.00000000  0.2
+  B  B5  1  0.66666667  0.33333333  0.50000000  1.0
+  B  B6  1  0.33333333  0.66666667  0.50000000  1.0

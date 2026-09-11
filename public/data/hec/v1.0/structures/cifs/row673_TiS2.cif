@@ -1,0 +1,47 @@
+# generated using pymatgen
+data_Ta0.6Ti0.6Nb0.6V0.6Cr0.6Se6
+_symmetry_space_group_name_H-M   'P 1'
+_cell_length_a   3.53549435
+_cell_length_b   3.53408142
+_cell_length_c   18.67134634
+_cell_angle_alpha   89.98777843
+_cell_angle_beta   90.00609289
+_cell_angle_gamma   120.03802695
+_symmetry_Int_Tables_number   1
+_chemical_formula_structural   Ta0.6Ti0.6Nb0.6V0.6Cr0.6Se6
+_chemical_formula_sum   'Ta0.6 Ti0.6 Nb0.6 V0.6 Cr0.6 Se6'
+_cell_volume   201.96048848
+_cell_formula_units_Z   1
+loop_
+ _symmetry_equiv_pos_site_id
+ _symmetry_equiv_pos_as_xyz
+  1  'x, y, z'
+loop_
+ _atom_site_type_symbol
+ _atom_site_label
+ _atom_site_symmetry_multiplicity
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_occupancy
+  Ta  Ta0  1  0.00000000  0.00000000  0.00000000  0.2
+  Ti  Ti1  1  0.00000000  0.00000000  0.00000000  0.2
+  Nb  Nb2  1  0.00000000  0.00000000  0.00000000  0.2
+  V  V3  1  0.00000000  0.00000000  0.00000000  0.2
+  Cr  Cr4  1  0.00000000  0.00000000  0.00000000  0.2
+  Ta  Ta5  1  0.00000000  0.00000000  0.33729402  0.2
+  Ti  Ti6  1  0.00000000  0.00000000  0.33729402  0.2
+  Nb  Nb7  1  0.00000000  0.00000000  0.33729402  0.2
+  V  V8  1  0.00000000  0.00000000  0.33729402  0.2
+  Cr  Cr9  1  0.00000000  0.00000000  0.33729402  0.2
+  Ta  Ta10  1  0.00000000  0.00000000  0.66270598  0.2
+  Ti  Ti11  1  0.00000000  0.00000000  0.66270598  0.2
+  Nb  Nb12  1  0.00000000  0.00000000  0.66270598  0.2
+  V  V13  1  0.00000000  0.00000000  0.66270598  0.2
+  Cr  Cr14  1  0.00000000  0.00000000  0.66270598  0.2
+  Se  Se15  1  0.33333333  0.66666667  0.07766743  1.0
+  Se  Se16  1  0.66666667  0.33333333  0.92233257  1.0
+  Se  Se17  1  0.33333333  0.66666667  0.41489487  1.0
+  Se  Se18  1  0.66666667  0.33333333  0.58510513  1.0
+  Se  Se19  1  0.33333333  0.66666667  0.74109185  1.0
+  Se  Se20  1  0.66666667  0.33333333  0.25890815  1.0

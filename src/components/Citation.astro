@@ -1,0 +1,38 @@
+---
+import { Copy } from '@lucide/astro';
+import T from './T.astro';
+const { citation, bibtex } = Astro.props;
+---
+<div class="citation-block">
+  <div class="citation-header"><span><T zh="参考引用" en="Suggested citation"/></span><button class="button copy-citation" type="button"><Copy size={15}/><T zh="复制引用" en="Copy citation"/></button></div>
+  <p class="citation-text" lang="en">{citation}</p>
+  {bibtex && <details><summary>BibTeX</summary><pre>{bibtex}</pre></details>}
+  <span class="copy-status" role="status"></span>
+</div>
+<script>
+  import { translate } from '../lib/i18n.js';
+  document.querySelectorAll<HTMLElement>('.citation-block').forEach(block => {
+    let copied: boolean | undefined;
+    const renderStatus = () => {
+      const status = block.querySelector<HTMLElement>('.copy-status');
+      if (status && copied !== undefined) status.textContent = copied ? translate('已复制引用', 'Citation copied') : translate('无法访问剪贴板，请选择上方引用文本复制。', 'Clipboard access failed. Select and copy the citation above.');
+    };
+    document.addEventListener('localechange', renderStatus);
+    block.querySelector('.copy-citation')?.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(block.querySelector('.citation-text')?.textContent || '');
+        copied = true;
+      } catch {
+        copied = false;
+      }
+      renderStatus();
+    });
+  });
+</script>
+<style>
+  .citation-block { border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); padding-block: 20px; }
+  .citation-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; color: var(--color-muted); font-size: 13px; }
+  .citation-text { max-width: 850px; font-family: Georgia, serif; font-size: 17px; line-height: 1.8; margin-bottom: 0; }
+  .copy-status { color: var(--color-teal); font-size: 12px; }
+  pre { white-space: pre-wrap; overflow-wrap: anywhere; }
+</style>

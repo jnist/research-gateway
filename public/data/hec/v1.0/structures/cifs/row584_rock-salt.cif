@@ -1,0 +1,46 @@
+# generated using pymatgen
+data_Sn0.1Ge3.36Sb0.44Te4Pb0.1
+_symmetry_space_group_name_H-M   'P 1'
+_cell_length_a   6.09272261
+_cell_length_b   6.10359150
+_cell_length_c   6.09021645
+_cell_angle_alpha   89.95930166
+_cell_angle_beta   89.97409401
+_cell_angle_gamma   89.96763865
+_symmetry_Int_Tables_number   1
+_chemical_formula_structural   Sn0.1Ge3.36Sb0.44Te4Pb0.1
+_chemical_formula_sum   'Sn0.1 Ge3.36 Sb0.44 Te4 Pb0.1'
+_cell_volume   226.47974659
+_cell_formula_units_Z   1
+loop_
+ _symmetry_equiv_pos_site_id
+ _symmetry_equiv_pos_as_xyz
+  1  'x, y, z'
+loop_
+ _atom_site_type_symbol
+ _atom_site_label
+ _atom_site_symmetry_multiplicity
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_occupancy
+  Sn  Sn0  1  0.00000000  0.00000000  0.00000000  0.025
+  Ge  Ge1  1  0.00000000  0.00000000  0.00000000  0.84
+  Sb  Sb2  1  0.00000000  0.00000000  0.00000000  0.11
+  Pb  Pb3  1  0.00000000  0.00000000  0.00000000  0.025
+  Sn  Sn4  1  0.50000000  0.50000000  0.00000000  0.025
+  Ge  Ge5  1  0.50000000  0.50000000  0.00000000  0.84
+  Sb  Sb6  1  0.50000000  0.50000000  0.00000000  0.11
+  Pb  Pb7  1  0.50000000  0.50000000  0.00000000  0.025
+  Sn  Sn8  1  0.50000000  0.00000000  0.50000000  0.025
+  Ge  Ge9  1  0.50000000  0.00000000  0.50000000  0.84
+  Sb  Sb10  1  0.50000000  0.00000000  0.50000000  0.11
+  Pb  Pb11  1  0.50000000  0.00000000  0.50000000  0.025
+  Sn  Sn12  1  0.00000000  0.50000000  0.50000000  0.025
+  Ge  Ge13  1  0.00000000  0.50000000  0.50000000  0.84
+  Sb  Sb14  1  0.00000000  0.50000000  0.50000000  0.11
+  Pb  Pb15  1  0.00000000  0.50000000  0.50000000  0.025
+  Te  Te16  1  0.00000000  0.50000000  0.00000000  1.0
+  Te  Te17  1  0.50000000  0.00000000  0.00000000  1.0
+  Te  Te18  1  0.00000000  0.00000000  0.50000000  1.0
+  Te  Te19  1  0.50000000  0.50000000  0.50000000  1.0

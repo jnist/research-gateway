@@ -1,0 +1,12 @@
+// Unmodified matching algorithm from the MIT-licensed original HEC explorer.
+// Copyright (c) 2026 High-Entropy Ceramics Database contributors.
+function rowMatchesSelection(sites, selected) {
+  const siteElementSets = Object.values(sites);
+  if (selected.length === 1) {
+    return siteElementSets.some((siteElements) => siteElements.has(selected[0]));
+  }
+
+  return siteElementSets.some((siteElements) =>
+    selected.every((element) => siteElements.has(element))
+  );
+}

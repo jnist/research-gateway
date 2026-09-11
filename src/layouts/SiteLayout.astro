@@ -1,0 +1,40 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/base.css';
+import { href, institution } from '../lib/site';
+import T from '../components/T.astro';
+import { attrs, initializeLocale, resolveLocale } from '../lib/i18n.js';
+interface Props { title: string; titleEn: string; description?: string; descriptionEn?: string; active?: string; }
+const { title, titleEn, description = '济南超级计算技术研究院科研成果、数据资源与在线研究工具。', descriptionEn = 'Research, data resources and online tools from the Jinan Institute of Supercomputing Technology.', active } = Astro.props;
+const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : undefined;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script is:inline set:html={`(${initializeLocale.toString()})(${resolveLocale.toString()})`} />
+    <meta name="description" {...attrs('content', description, descriptionEn)} />
+    <meta name="theme-color" content="#153c79" />
+    <meta property="og:title" {...attrs('content', `${title} | JNIST Research`, `${titleEn} | JNIST Research`)} />
+    <meta property="og:description" {...attrs('content', description, descriptionEn)} />
+    <meta property="og:type" content="website" />
+    {canonical && <link rel="canonical" href={canonical} />}
+    <title data-i18n-text data-zh={`${title} | ${institution.name}`} data-en={`${titleEn} | JNIST Research`}>{titleEn} | JNIST Research</title>
+    <link rel="icon" type="image/png" href={href('images/jnist-logo.png')} />
+  </head>
+  <body>
+    <a class="skip-link" href="#main"><T zh="跳转到主要内容" en="Skip to main content"/></a>
+    <Header active={active} />
+    <main id="main"><slot /></main>
+    <Footer />
+  </body>
+</html>
+<script>
+  import { applyLocale, getLocale } from '../lib/i18n.js';
+  applyLocale(getLocale());
+  document.querySelectorAll<HTMLSelectElement>('[data-language-switch]').forEach(select => {
+    select.addEventListener('change', () => applyLocale(select.value, true));
+  });
+</script>
