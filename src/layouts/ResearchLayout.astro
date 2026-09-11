@@ -1,6 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import { ArrowRight, ArrowUpRight, ChevronRight, Download, FileText, Database } from '@lucide/astro';
+import { ArrowRight, ArrowUpRight, ChevronRight, Download, FileArchive, FileText, Database } from '@lucide/astro';
 import SiteLayout from './SiteLayout.astro';
 import Citation from '../components/Citation.astro';
 import { href } from '../lib/site';
@@ -9,6 +9,7 @@ import { attrs } from '../lib/i18n.js';
 interface Props { entry: CollectionEntry<'research'>; }
 const { entry } = Astro.props;
 const data = entry.data;
+const fullDatasetPath = data.datasetArchivePath || data.datasetPath;
 ---
 <SiteLayout title={data.title} titleEn={data.englishTitle} description={data.summary} descriptionEn={data.en.summary}>
   <section class="research-intro">
@@ -19,7 +20,7 @@ const data = entry.data;
       {data.authors.length > 0 && <p class="muted">{data.authors.join(' · ')}</p>}
       <div class="actions">
         {data.tool && <a class="button button-primary" href="#explorer"><T zh="在线使用" en="Open explorer"/> <ArrowRight size={16}/></a>}
-        {data.datasetPath && <a class="button" href={href(data.datasetPath)} download><Download size={16}/><T zh="完整数据" en="Full dataset"/></a>}
+        {fullDatasetPath && <a class="button" href={href(fullDatasetPath)} download><Download size={16}/><T zh="完整数据" en="Full dataset"/></a>}
         {data.paperUrl && <a class="button" href={data.paperUrl} target="_blank" rel="noopener noreferrer"><FileText size={16}/><T zh="论文" en="Paper"/> <ArrowUpRight size={14}/></a>}
         {data.codeUrl && <a class="text-link" href={data.codeUrl} target="_blank" rel="noopener noreferrer"><T zh="成果代码" en="Research code"/> <ArrowUpRight size={16}/></a>}
       </div>
@@ -35,8 +36,8 @@ const data = entry.data;
   </div></section>
   {data.datasetPath && <section id="downloads" class="section section-tint"><div class="container">
     <div class="section-heading"><div><p class="eyebrow">DATA & RESOURCES</p><h2><span class="section-number">03</span><T zh="数据下载" en="Downloads"/></h2></div><span class="tag tag-green">v{data.version}</span></div>
-    <div class="download-row"><Database size={27}/><div><h3><T zh="完整数据集" en="Full dataset"/></h3><p><T zh="原始 CSV · 标准化化学式、晶体原型与文献 DOI" en="Original CSV · Standardized formulas, crystal prototypes and source DOIs"/></p></div><a class="button" href={href(data.datasetPath)} download><Download size={16}/><T zh="下载 CSV" en="Download CSV"/></a></div>
-    {data.manifestPath && <div class="download-row"><FileText size={27}/><div><h3><T zh="数据版本清单" en="Release manifest"/></h3><p><T zh="JSON · 文件数量、导入日期与 SHA-256 校验值" en="JSON · File counts, import date and SHA-256 checksum"/></p></div><a class="button" href={href(data.manifestPath)} download><Download size={16}/><T zh="下载 JSON" en="Download JSON"/></a></div>}
+    {data.datasetArchivePath && <div class="download-row"><FileArchive size={27}/><div><h3><T zh="完整数据集打包下载" en="Complete dataset archive"/></h3><p><T zh="ZIP · CSV 数据、晶体结构、索引与版本信息" en="ZIP · CSV data, crystal structures, indexes and release information"/></p></div><a class="button" href={href(data.datasetArchivePath)} download><Download size={16}/><T zh="下载 ZIP" en="Download ZIP"/></a></div>}
+    <div class="download-row"><Database size={27}/><div><h3><T zh="数据清单下载" en="Dataset listing"/></h3><p><T zh="原始 CSV · 标准化化学式、晶体原型与文献 DOI" en="Original CSV · Standardized formulas, crystal prototypes and source DOIs"/></p></div><a class="button" href={href(data.datasetPath)} download><Download size={16}/><T zh="下载 CSV" en="Download CSV"/></a></div>
     <p class="license-note"><T zh={data.licenseNote} en={data.en.licenseNote}/></p>
   </div></section>}
   <section id="citation" class="section"><div class="container">

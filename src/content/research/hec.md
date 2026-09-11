@@ -10,6 +10,7 @@ image: images/hec-preview.png
 imageAlt: 高熵陶瓷数据库的元素周期表筛选界面
 tool: hec
 datasetPath: data/hec/v1.0/dataset.csv
+datasetArchivePath: data/hec/hec-v1.0.zip
 manifestPath: data/hec/v1.0/manifest.json
 citation: >-
   High-Entropy Ceramics Database for Atomic-scale Simulation and Data-driven Design.

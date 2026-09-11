@@ -4,6 +4,7 @@ dist/
 .DS_Store
 temp/
 *.zip
+!/public/data/hec/hec-v1.0.zip
 .env
 .env.*
 !.env.example

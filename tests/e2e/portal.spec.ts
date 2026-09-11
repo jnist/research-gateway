@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { readFile } from 'node:fs/promises';
+import { createHash } from 'node:crypto';
 import { rowsFromCsv, filterRows } from '../../src/features/hec/data.js';
 test.use({ locale: 'zh-CN' });
 
@@ -99,6 +100,50 @@ test('structure and full data downloads resolve under the configured base', asyn
   }
   for (const link of await page.locator('#downloads a[download]').all()) {
     expect((await request.get((await link.getAttribute('href'))!)).status()).toBe(200);
+  }
+});
+
+test('complete dataset ZIP downloads unchanged in both languages', async ({ page, baseURL }, testInfo) => {
+  const original = await readFile(new URL('../../public/data/hec/hec-v1.0.zip', import.meta.url));
+  const checksum = (data: Buffer) => createHash('sha256').update(data).digest('hex');
+  for (const [locale, label] of [['zh', '下载 ZIP'], ['en', 'Download ZIP']]) {
+    await page.locator('[data-language-switch]').selectOption(locale);
+    const link = page.locator('#downloads').getByRole('link', { name: label, exact: true });
+    await expect(link).toHaveAttribute('href', `${new URL(baseURL!).pathname}data/hec/hec-v1.0.zip`);
+    const downloadPromise = page.waitForEvent('download');
+    await link.click();
+    const download = await downloadPromise;
+    expect(download.suggestedFilename()).toBe('hec/hec-v1.0.zip');
+    expect(checksum(await readFile((await download.path())!))).toBe(checksum(original));
+    await page.locator('#downloads').evaluate(node => node.scrollIntoView({ behavior: 'instant' }));
+    await page.screenshot({ path: testInfo.outputPath(`downloads-${locale}.png`) });
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+  }
+});
+
+test('intro full dataset action downloads the ZIP archive', async ({ page, baseURL }) => {
+  const link = page.locator('.research-intro a[download]');
+  await expect(link).toHaveAttribute('href', `${new URL(baseURL!).pathname}data/hec/hec-v1.0.zip`);
+  const downloadPromise = page.waitForEvent('download');
+  await link.click();
+  const download = await downloadPromise;
+  expect(download.suggestedFilename()).toBe('hec/hec-v1.0.zip');
+  const original = await readFile(new URL('../../public/data/hec/hec-v1.0.zip', import.meta.url));
+  expect((await readFile((await download.path())!)).equals(original)).toBe(true);
+});
+
+test('downloads show the data listing without the manifest row in both languages', async ({ page }, testInfo) => {
+  if (testInfo.project.name === 'desktop') await page.setViewportSize({ width: 765, height: 787 });
+  for (const [locale, title] of [['zh', '数据清单下载'], ['en', 'Dataset listing']]) {
+    await page.locator('[data-language-switch]').selectOption(locale);
+    const section = page.locator('#downloads');
+    const row = section.locator('.download-row').filter({ has: page.getByRole('heading', { name: title, exact: true }) });
+    await expect(row.locator('a[download]')).toHaveAttribute('href', /\/data\/hec\/v1\.0\/dataset\.csv$/);
+    await expect(section.locator('.download-row')).toHaveCount(2);
+    await expect(section.locator('a[href$="manifest.json"]')).toHaveCount(0);
+    await section.evaluate(node => node.scrollIntoView({ behavior: 'instant' }));
+    await page.screenshot({ path: testInfo.outputPath(`downloads-${locale}.png`) });
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
   }
 });
 

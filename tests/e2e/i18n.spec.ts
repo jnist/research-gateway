@@ -168,6 +168,7 @@ test('without JavaScript static content defaults to English', async ({ browser, 
     await expect(page.locator('html')).toHaveAttribute('lang', 'en');
     await expect(page.locator('h1')).toHaveText('High-Entropy Ceramics Database', { useInnerText: true });
     await expect(page.getByRole('link', { name: 'Download CSV', exact: true })).toBeVisible();
+    await expect(page.getByRole('link', { name: 'Download ZIP', exact: true })).toBeVisible();
     await expect(page.locator('noscript .notice')).toBeVisible();
     await expect(page.locator('noscript .notice')).toContainText('requires JavaScript', { useInnerText: true });
   } finally { await context.close(); }

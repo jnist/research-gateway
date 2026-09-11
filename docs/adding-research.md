@@ -18,7 +18,8 @@ schema、模块注册方式与共享组件以当前代码为准；修改通用�
 可选 `en.image` 提供英文界面的预览图，缺省时共用 `image`。
 缺少同名英文正文将导致构建失败。`image` 指向 `public/`
 中的授权预览图，不含 `public/` 前缀。可选字段：
-`tool`、`authors`、`paperUrl`、`codeUrl`、`datasetPath`、`manifestPath`、`bibtex`。
+`tool`、`authors`、`paperUrl`、`codeUrl`、`datasetPath`、`datasetArchivePath`、`manifestPath`、`bibtex`。
+`datasetArchivePath` 为完整数据集 ZIP 的站内下载路径，例如 `data/hec/hec-v1.0.zip`，不含 `public/` 前缀。新增 ZIP 时须为指定文件添加 `.gitignore` 例外，避免部署遗漏资源。
 未登记的 `tool` 会让 build 失败，不会静默省略交互模块。
 
 ## 站内路径

@@ -27,6 +27,7 @@ const research = defineCollection({
     paperUrl: z.url().optional(),
     codeUrl: z.url().optional(),
     datasetPath: z.string().optional(),
+    datasetArchivePath: z.string().optional(),
     manifestPath: z.string().optional(),
     citation: z.string(),
     bibtex: z.string().optional(),
