@@ -159,12 +159,16 @@ test('overview copy stays aligned in both languages', async ({ page }, testInfo)
     await expect(content.getByRole('heading', { name: locale === 'zh' ? 'CSV原始数据字段' : 'Raw CSV data fields', exact: true })).toBeVisible();
     await expect(content.locator('tbody tr td:nth-child(2)')).toHaveText(locale === 'zh' ? [
       '按 A、B 等晶格位点组织的元素及占位比例',
+      '由阴离子位点推导的材料类型，如 oxide、carbide、fluoride',
+      '最高熵晶格位点的理想混合熵（以 R 为单位），取各位点 −Σ xᵢ ln xᵢ 的最大值',
       '晶体原型及其名称',
       '位点的化学计量系数，用于生成可读化学式',
       '来源论文链接',
       '筛选导出时附加的原始记录编号',
     ] : [
       'Elements and occupancy fractions grouped by lattice sites such as A and B.',
+      'Material class derived from anion sites, such as oxide, carbide or fluoride.',
+      'Ideal mixing entropy of the highest-entropy lattice site, in units of R: the maximum −Σ xᵢ ln xᵢ across sites.',
       'Crystal prototype and name.',
       'Site stoichiometric coefficients used to construct a readable chemical formula.',
       'Links to source papers.',
@@ -174,8 +178,8 @@ test('overview copy stays aligned in both languages', async ({ page }, testInfo)
     await expect(content).not.toContainText('Frontend');
     await expect(content).not.toContainText('Computational Materials Science');
     await expect(content.locator('p').last()).toHaveText(locale === 'zh'
-      ? '选择一个元素时，匹配任意位点包含该元素的记录；选择多个元素时， 要求它们同时出现在同一个晶格位点。例如首条 AlB2 原型记录中， Hf 与 Ti 同属 A 位点，可以共同匹配；Hf 与 B 分属不同位点，不会共同匹配。'
-      : 'Selecting one element matches records with that element at any lattice site. Selecting several elements requires all of them to occur at the same lattice site. For example, in the first AlB2 prototype record, Hf and Ti share site A and can match together. Hf and B occupy different sites and do not match together in that record.');
+      ? '选择一个元素时，匹配任意位点包含该元素的记录；选择多个元素时， 要求它们同时出现在同一个晶格位点。例如首条 AlB2 原型记录中， Hf 与 Ti 同属 A 位点，可以共同匹配；Hf 与 B 分属不同位点，不会共同匹配。 材料类型下拉框可进一步按 material_type 收窄结果；默认值「全部」不施加类型约束。'
+      : 'Selecting one element matches records with that element at any lattice site. Selecting several elements requires all of them to occur at the same lattice site. For example, in the first AlB2 prototype record, Hf and Ti share site A and can match together. Hf and B occupy different sites and do not match together in that record. The material-type dropdown further narrows matches by material_type; the default value “all” applies no type constraint.');
     await content.locator('table').scrollIntoViewIfNeeded();
     expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(page.viewportSize()!.width);
     await page.screenshot({ path: testInfo.outputPath(`overview-copy-${locale}.png`) });

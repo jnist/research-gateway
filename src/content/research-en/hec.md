@@ -10,6 +10,8 @@ searchable resource for atomic-scale simulation and data-driven materials design
 | Field | Meaning |
 | --- | --- |
 | `Sorted Json formula` | Elements and occupancy fractions grouped by lattice sites such as A and B. |
+| `material_type` | Material class derived from anion sites, such as oxide, carbide or fluoride. |
+| `configurational_entropy` | Ideal mixing entropy of the highest-entropy lattice site, in units of R: the maximum −Σ xᵢ ln xᵢ across sites. |
 | `prototype` / `prototype_name` | Crystal prototype and name. |
 | `prototype_formula` | Site stoichiometric coefficients used to construct a readable chemical formula. |
 | `DOIs` | Links to source papers. |
@@ -21,4 +23,5 @@ Selecting one element matches records with that element at any lattice site.
 Selecting several elements requires **all of them to occur at the same lattice site**.
 For example, in the first AlB2 prototype record, Hf and Ti share site A and can
 match together. Hf and B occupy different sites and do not match together in
-that record.
+that record. The material-type dropdown further narrows matches by `material_type`;
+the default value “all” applies no type constraint.

@@ -4,9 +4,11 @@ import vm from 'node:vm';
 import { spawnSync } from 'node:child_process';
 import test from 'node:test';
 import {
-  rowsFromCsv, filterRows, rowMatchesSelection, exportRows,
+  rowsFromCsv, filterRows, sortRowsByEntropy, rowMatchesSelection, exportRows,
 } from '../../src/features/hec/data.js';
 import { buildPrettyFormula, escapeHtml, extractDois } from '../../src/features/hec/format.js';
+import { configurationalEntropyFromSortedJson, formatConfigurationalEntropy } from '../../src/features/hec/entropy.js';
+import { materialTypeFromSortedJson } from '../../src/features/hec/material-type.js';
 import { assetPath } from '../../src/lib/paths.js';
 import { validateIndexes } from '../../src/features/hec/indexes.js';
 
@@ -20,8 +22,78 @@ test('official dataset contains 717 records with stable original indexes', () =>
   assert.equal(rows[0].data.prototype, 'AlB2');
 });
 
+test('material_type matches anion-site derivation for every official row', () => {
+  const counts = {};
+  for (const row of rows) {
+    const expected = materialTypeFromSortedJson(row.sortedJsonValue);
+    assert.ok(expected, `row ${row.id} must resolve a material type`);
+    assert.equal(row.data.material_type, expected, `row ${row.id}`);
+    counts[expected] = (counts[expected] || 0) + 1;
+  }
+  assert.deepEqual(counts, {
+    oxide: 445,
+    carbide: 57,
+    silicate: 44,
+    boride: 39,
+    telluride: 23,
+    chalcogenide: 17,
+    nitride: 16,
+    carbonitride: 15,
+    sulfide: 12,
+    silicide: 10,
+    fluoride: 9,
+    selenide: 5,
+    antimonide: 5,
+    phosphate: 4,
+    oxyfluoride: 4,
+    thiophosphate: 4,
+    chloride: 3,
+    stannate: 2,
+    carbosilicate: 1,
+    stannide: 1,
+    iodide: 1,
+  });
+});
+
+test('configurational_entropy matches max-site mixing entropy for every official row', () => {
+  for (const row of rows) {
+    const expected = configurationalEntropyFromSortedJson(row.sortedJsonValue);
+    assert.ok(expected != null, `row ${row.id} must resolve configurational entropy`);
+    assert.equal(Number(row.data.configurational_entropy), expected, `row ${row.id}`);
+  }
+  assert.equal(Number(rows[0].data.configurational_entropy), 1.609438);
+  assert.equal(Number(rows[6].data.configurational_entropy), 1.593216);
+  assert.equal(Number(rows[30].data.configurational_entropy), 0.936888);
+  assert.equal(Number(rows[255].data.configurational_entropy), 1.609438);
+  assert.equal(formatConfigurationalEntropy(rows[0].data.configurational_entropy), '1.609');
+  assert.equal(formatConfigurationalEntropy(''), '—');
+});
+
+test('sortRowsByEntropy orders by value, keeps ties stable, and places missing last', () => {
+  const sample = [
+    { id: 3, data: { configurational_entropy: '1.0' } },
+    { id: 1, data: { configurational_entropy: '2.0' } },
+    { id: 2, data: { configurational_entropy: '2.0' } },
+    { id: 4, data: { configurational_entropy: '' } },
+    { id: 5, data: {} },
+  ];
+  assert.deepEqual(sortRowsByEntropy(sample, '').map(row => row.id), [3, 1, 2, 4, 5]);
+  assert.deepEqual(sortRowsByEntropy(sample, 'desc').map(row => row.id), [1, 2, 3, 4, 5]);
+  assert.deepEqual(sortRowsByEntropy(sample, 'asc').map(row => row.id), [3, 1, 2, 4, 5]);
+});
+
 test('empty selection preserves the original empty-result behavior', () => {
   assert.deepEqual(filterRows(rows, []), []);
+  assert.deepEqual(filterRows(rows, [], 'oxide'), []);
+});
+
+test('material type filter narrows matches and all preserves the untyped filter', () => {
+  const untyped = filterRows(rows, ['Hf']);
+  assert.deepEqual(filterRows(rows, ['Hf'], 'all').map(row => row.id), untyped.map(row => row.id));
+  const oxides = filterRows(rows, ['Hf'], 'oxide');
+  assert.ok(oxides.length > 0);
+  assert.ok(oxides.length < untyped.length);
+  assert.ok(oxides.every(row => row.data.material_type === 'oxide'));
 });
 
 test('all selected elements must coexist at the SAME lattice site', () => {

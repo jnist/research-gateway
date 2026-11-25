@@ -27,7 +27,7 @@
 ## HEC 数据
 
 - 原始资料：用户提供的 `temp/Release code/Frontend/`。
-- `public/data/hec/v1.0/dataset.csv` 保留原文件字节；SHA-256 记录在 manifest。
+- `public/data/hec/v1.0/dataset.csv` 在原始发布内容基础上增加了派生列 `material_type` 与 `configurational_entropy`；行序与其余字段保持不变。SHA-256 记录在 manifest，并与当前发布文件一致。
 - 671 份 CIF 和 671 份 relaxed-supercell 文件直接复制，不改写结构。
 - `indexes.json` 从三份原始 JavaScript 索引机械提取；文献标题来自原始 OpenAlex 查询结果，未在线补造。
 - 保留 `CODE-LICENSE.txt` 的 MIT 声明。它是代码许可，不能据此推定数据授权。

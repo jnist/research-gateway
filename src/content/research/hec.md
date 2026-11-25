@@ -36,6 +36,8 @@ en:
 | 字段 | 含义 |
 | --- | --- |
 | `Sorted Json formula` | 按 A、B 等晶格位点组织的元素及占位比例 |
+| `material_type` | 由阴离子位点推导的材料类型，如 oxide、carbide、fluoride |
+| `configurational_entropy` | 最高熵晶格位点的理想混合熵（以 R 为单位），取各位点 −Σ xᵢ ln xᵢ 的最大值 |
 | `prototype` / `prototype_name` | 晶体原型及其名称 |
 | `prototype_formula` | 位点的化学计量系数，用于生成可读化学式 |
 | `DOIs` | 来源论文链接 |
@@ -46,3 +48,4 @@ en:
 选择一个元素时，匹配任意位点包含该元素的记录；选择多个元素时，
 要求它们**同时出现在同一个晶格位点**。例如首条 AlB2 原型记录中，
 Hf 与 Ti 同属 A 位点，可以共同匹配；Hf 与 B 分属不同位点，不会共同匹配。
+材料类型下拉框可进一步按 `material_type` 收窄结果；默认值「全部」不施加类型约束。

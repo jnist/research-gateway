@@ -2,11 +2,13 @@ import { test, expect } from '@playwright/test';
 import { readFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import { rowsFromCsv, filterRows } from '../../src/features/hec/data.js';
+import { formatConfigurationalEntropy } from '../../src/features/hec/entropy.js';
 test.use({ locale: 'zh-CN' });
 
 const officialCsv = await readFile(new URL('../../public/data/hec/v1.0/dataset.csv', import.meta.url), 'utf8');
 const rows = rowsFromCsv(officialCsv);
 const tinyCsv = 'Sorted Json formula,prototype,prototype_formula,DOIs\r\n"{""A"":{""C"":1}}",carbon,,';
+const entropyText = row => formatConfigurationalEntropy(row.data.configurational_entropy);
 
 test('home and research pages load with working images and no horizontal overflow', async ({ page }, testInfo) => {
   const errors: string[] = [];
@@ -51,6 +53,7 @@ test.beforeEach(async ({ page }, testInfo) => {
 });
 
 test('same-site filtering, empty results, clear and focus state', async ({ page }) => {
+  await expect(page.locator('#materialType')).toHaveValue('all');
   const hf = page.locator('#periodicTable [data-symbol="Hf"]');
   await hf.click();
   await expect(hf).toHaveAttribute('aria-pressed', 'true');
@@ -69,6 +72,36 @@ test('same-site filtering, empty results, clear and focus state', async ({ page 
   await page.locator('#clearSelection').click();
   await expect(page.locator('#emptyState')).toContainText('尚未选择元素');
   await expect(page.locator('#periodicTable [aria-pressed="true"]')).toHaveCount(0);
+});
+
+test('material type dropdown narrows results and all restores the full match', async ({ page }) => {
+  await expect(page.locator('#materialType')).toHaveValue('all');
+  await page.locator('#materialType').selectOption('oxide');
+  await page.locator('#periodicTable [data-symbol="Hf"]').click();
+  const oxides = filterRows(rows, ['Hf'], 'oxide');
+  await expect(page.locator('#resultCount')).toContainText(`${oxides.length} 条匹配记录`);
+  await expect(page.locator('#resultsBody tr').first().locator('td').nth(2)).toHaveText('oxide');
+  await expect(page.locator('#resultsBody tr').first().locator('td').nth(3)).toHaveText(entropyText(oxides[0]));
+  await page.locator('#materialType').selectOption('all');
+  await expect(page.locator('#resultCount')).toContainText(`${filterRows(rows, ['Hf']).length} 条匹配记录`);
+});
+
+test('entropy header cycles descending, ascending, and dataset order', async ({ page }) => {
+  await page.locator('#periodicTable [data-symbol="Hf"]').click();
+  const matches = filterRows(rows, ['Hf']);
+  const byDesc = [...matches].sort((a, b) => Number(b.data.configurational_entropy) - Number(a.data.configurational_entropy) || a.id - b.id);
+  const byAsc = [...matches].sort((a, b) => Number(a.data.configurational_entropy) - Number(b.data.configurational_entropy) || a.id - b.id);
+  const first = page.locator('#resultsBody tr').first();
+  await expect(first.locator('td').nth(3)).toHaveText(entropyText(matches[0]));
+  await page.locator('#entropySort').click();
+  await expect(page.locator('th[aria-sort="descending"]')).toBeVisible();
+  await expect(first.locator('td').nth(3)).toHaveText(entropyText(byDesc[0]));
+  await page.locator('#entropySort').click();
+  await expect(page.locator('th[aria-sort="ascending"]')).toBeVisible();
+  await expect(first.locator('td').nth(3)).toHaveText(entropyText(byAsc[0]));
+  await page.locator('#entropySort').click();
+  await expect(page.locator('th[aria-sort="none"]')).toBeVisible();
+  await expect(first.locator('td').first()).toHaveText(String(matches[0].id).padStart(3, '0'));
 });
 
 test('pagination preserves IDs and CSV export includes every matching record', async ({ page }) => {

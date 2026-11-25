@@ -9,7 +9,7 @@
   "prototypes": 26,
   "cifFiles": 671,
   "supercellFiles": 671,
-  "sha256": "91abf3a7de953e40ad5d4616ada5ed99877c1b6d0f7241b870b4c4ff3d70822f",
+  "sha256": "c195a96e4f74798700e086d10f58f9f990a040da07ac4de5241586282ded9604",
   "codeLicense": "MIT",
   "dataLicense": "Not specified in the source release. Confirm with the authors before redistribution.",
   "structureIndex": "Original zero-based CSV record position; never local imported row position"
