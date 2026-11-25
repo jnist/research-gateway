@@ -1,14 +1,14 @@
 import { test, expect } from '@playwright/test';
 import { readFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
-import { rowsFromCsv, filterRows } from '../../src/features/hec/data.js';
+import { rowsFromCsv, filterRows, type HecRow } from '../../src/features/hec/data.js';
 import { formatConfigurationalEntropy } from '../../src/features/hec/entropy.js';
 test.use({ locale: 'zh-CN' });
 
 const officialCsv = await readFile(new URL('../../public/data/hec/v1.0/dataset.csv', import.meta.url), 'utf8');
 const rows = rowsFromCsv(officialCsv);
 const tinyCsv = 'Sorted Json formula,prototype,prototype_formula,DOIs\r\n"{""A"":{""C"":1}}",carbon,,';
-const entropyText = row => formatConfigurationalEntropy(row.data.configurational_entropy);
+const entropyText = (row: HecRow) => formatConfigurationalEntropy(row.data.configurational_entropy);
 
 test('home and research pages load with working images and no horizontal overflow', async ({ page }, testInfo) => {
   const errors: string[] = [];
